@@ -16,7 +16,7 @@ const Projects = () => {
     promise.then(
       function (response) {
         setProjects(response.documents);
-        // console.log(response);
+        // console.log(response.documents);
       },
       async function (error) {
         console.log(error);
@@ -28,7 +28,7 @@ const Projects = () => {
     <div className="flex  md:flex-row m-4  max-w-sm md:max-w-4xl lg:max-w-6xl gap-4 overflow-x-scroll">
       {projects.map((itm) => (
         <div
-          key={itm.$collectionId}
+          key={itm.$id}
           className=" rounded-sm  shadow-lg bg-gray-900 min-w-[320px]  "
         >
           <Link href={itm.project_link}>
