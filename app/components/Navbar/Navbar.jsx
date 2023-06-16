@@ -35,7 +35,7 @@ const Navbar = () => {
           contact
         </Link>
         <Link
-          className="border-4 gap-y-2  p-2 md:p-4  duration-300 text-xs md:text-sm flex font-bold bg-transparent hover:bg-white hover:text-black uppercase"
+          className="border-4 gap-2  p-2 md:p-4  duration-300 text-xs md:text-sm flex font-bold bg-transparent hover:bg-white hover:text-black uppercase"
           href={
             "https://cloud.appwrite.io/v1/storage/buckets/648b82ed147445b54f1e/files/648b82fd4b2b31a272c0/view?project=648b8256bc833c7ec3e0&mode=admin"
           }
