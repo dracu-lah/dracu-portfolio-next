@@ -39,14 +39,14 @@ const HeroSection = () => {
           <span className="animate-pulse text-yellow-400">/</span>
           {">"}
         </h1>
-        <div className="pt-5 flex justify-center items-center gap-x-2">
-          <Link href="#about" className="heroButton ">
+        <div className=" pt-5 flex justify-center items-center gap-x-2 ">
+          <Link href="#about" className="heroButton hover:text-black ">
             About
           </Link>
-          <Link href="#skills" className="heroButton">
+          <Link href="#skills" className="heroButton hover:text-black">
             Skills
           </Link>
-          <Link href="#portfolio" className="heroButton">
+          <Link href="#portfolio" className="heroButton hover:text-black">
             Projects
           </Link>
         </div>
