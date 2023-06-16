@@ -40,13 +40,13 @@ const HeroSection = () => {
           {">"}
         </h1>
         <div className=" pt-5 flex justify-center items-center gap-x-2 ">
-          <Link href="#about" className="heroButton hover:text-black ">
+          <Link href="#about" className="heroButton ">
             About
           </Link>
-          <Link href="#skills" className="heroButton hover:text-black">
+          <Link href="#skills" className="heroButton ">
             Skills
           </Link>
-          <Link href="#portfolio" className="heroButton hover:text-black">
+          <Link href="#portfolio" className="heroButton">
             Projects
           </Link>
         </div>

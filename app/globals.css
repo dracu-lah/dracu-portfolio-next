@@ -29,24 +29,7 @@ body {
 /* custom tailwind css */
 @layer utilities {
   .heroButton {
-    border-radius: 9999px;
-    border-width: 1px;
-    --tw-border-opacity: 1;
-    /* border-color: rgba(36, 36, 36, var(--tw-border-opacity)); */
-    padding: 0.5rem 1.5rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    --tw-text-opacity: 1;
-    /* color: rgba(107, 114, 128, var(--tw-text-opacity)); */
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 0.15s;
-  }
-  .heroButton:hover {
-    background: white;
-    border-color: white;
+    @apply border-2 border-yellow-100 animate-bounce hover:animate-none font-semibold py-2 px-4  text-xs md:text-sm rounded-full hover:bg-white hover:text-black;
   }
   .rightButton {
     @apply fixed right-0 m-5 border-2 border-slate-300 duration-300 hover:bg-slate-100 hover:text-black   cursor-pointer p-2;
@@ -88,4 +71,3 @@ html::-moz-scrollbar-thumb {
   background-color: #888;
   border-radius: 5px;
 }
-

@@ -33,7 +33,7 @@ const Contact = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className=" pt-10  flex flex-col gap-y-6 text-sm md:text-xl max-w-[90vh]"
+      className=" pt-10  flex flex-col gap-y-6 text-sm md:text-xl max-w-[90vh] mb-14 md:mb-0"
       autoComplete="off"
     >
       {status === true && (
