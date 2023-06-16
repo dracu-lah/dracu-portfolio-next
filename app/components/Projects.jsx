@@ -25,7 +25,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className="flex  md:flex-row m-4  max-w-sm md:max-w-4xl lg:max-w-6xl gap-4 overflow-x-scroll">
+    <div className="flex  md:flex-row m-4  min-w-[300px] md:max-w-4xl lg:max-w-6xl gap-4 overflow-hidden">
       {projects.map((itm) => (
         <div
           key={itm.$id}
