@@ -37,7 +37,7 @@ const SkillsSection = () => {
       className="min-h-screen flex flex-col justify-start items-center gap-10 m-4"
     >
       <div className="flex flex-col justify-center items-center gap-4 pt-40">
-        <h3 className="font-mono">
+        <h3 className="font-mono text-center">
           A PROBLEM IS A CHANCE FOR YOU TO DO YOUR BEST.
         </h3>
         <h1 className="text-4xl md:text-6xl font-semibold">
