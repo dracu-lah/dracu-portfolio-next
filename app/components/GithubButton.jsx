@@ -1,10 +1,31 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import client from "@/app/utils/appWrite";
+import { Databases } from "appwrite";
 
 const GithubButton = () => {
+  const [githubURL, setGithubURL] = useState("");
+  useEffect(() => {
+    const databases = new Databases(client);
+
+    let promise = databases.listDocuments(
+      "648b831eb80f41aa8b37",
+      "648bf3fb6afc137df487"
+    );
+    promise.then(
+      function (response) {
+        setGithubURL(response.documents[0].github_url);
+        // console.log(response.documents);
+      },
+      async function (error) {
+        console.log(error);
+      }
+    );
+  }, []);
   return (
     <Link
-      href="https://github.com/dracu-lah"
+      href={githubURL}
       className="fixed bottom-0 left-0 m-10 bg-slate-300 duration-300 hover:bg-slate-100 rounded-lg p-2"
     >
       <svg

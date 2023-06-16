@@ -6,6 +6,7 @@ import client from "../utils/appWrite";
 import { Databases } from "appwrite";
 const Projects = () => {
   const [projects, setProjects] = useState([]);
+
   useEffect(() => {
     const databases = new Databases(client);
 
@@ -16,7 +17,6 @@ const Projects = () => {
     promise.then(
       function (response) {
         setProjects(response.documents);
-        // console.log(response.documents);
       },
       async function (error) {
         console.log(error);
@@ -33,12 +33,10 @@ const Projects = () => {
         >
           <Link href={itm.project_link}>
             <Image
-              width={640}
               height={480}
-              className=" cursor-pointer hover:opacity-40 duration-300 "
-              src={
-                "https://cloud.appwrite.io/v1/storage/buckets/648b8573106f84dfbc19/files/648b85ac495aeabe2d00/view?project=648b8256bc833c7ec3e0&mode=admin"
-              }
+              width={640}
+              src={itm.img_url}
+              className="cursor-pointer hover:opacity-40 duration-300 "
               alt={itm.project_title}
             />
           </Link>
