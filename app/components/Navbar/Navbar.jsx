@@ -25,7 +25,7 @@ const Navbar = () => {
             fill="#000000"
           ></rect>
         </svg>
-        <h1 className="text-4xl">DVLPR</h1>
+        <h1 className="text-xs md:4xl">DVLPR</h1>
       </Link>
       <div className="flex gap-x-2">
         <Link
