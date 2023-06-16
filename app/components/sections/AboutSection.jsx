@@ -25,7 +25,7 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="flex flex-col md:flex-row md:justify-around  justify-start pt-40 gap-y-10 items-center min-h-screen"
+      className="px-5 text-center md:text-left md:px-0 flex flex-col md:flex-row md:justify-around  justify-start pt-40 gap-y-10 items-center min-h-screen"
     >
       <div className="flex flex-col gap-6">
         <h1 className="text-4xl lg:text-6xl font-bold">Hi, I'mNevil </h1>
