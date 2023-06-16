@@ -18,7 +18,7 @@ const AboutSection = () => {
     <p className="max-w-sm lg:max-w-lg mt-4 font-extralight lg:text-xl md:mt-0 md:text-lg p-2 my-10 leading-relaxed">
       Professionally connected with the web development industry.
       Problem solver, well-organised person, loyal employee with high
-      attention to detail. Fan of Boxing, outdoor activities, video
+      attention to detail. Fan of Anime, outdoor activities, video
       games, and coding of course. Interested in the entire frontend
       spectrum and working on ambitious projects with interesting
       people.
