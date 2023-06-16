@@ -6,7 +6,7 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="flex flex-col md:flex-row md:gap-x-10 md:justify-around justify-center items-center min-h-screen"
+      className="flex flex-col lg:flex-row md:gap-x-10 lg:justify-around justify-center items-center min-h-screen"
     >
       <div className="text-center">
         <h1 className="text-5xl py-10 lg:text-6xl font-bold">CONTACT ME</h1>
