@@ -1,6 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import Link from "next/link";
+import ResumeDownloadButton from "./ResumeDownloadButton";
 const Navbar = () => {
   return (
     <nav className=" p-5 md:p-8 flex justify-between  min-w-full z-50 sticky top-0 navbar bg-base-100  border-b border-b-slate-100/10 opacity-90 backdrop-filter backdrop-blur-2xl">
@@ -34,14 +35,7 @@ const Navbar = () => {
         >
           contact
         </Link>
-        <Link
-          className="border-4 gap-2  p-2 md:p-4  duration-300 text-xs md:text-sm flex font-bold bg-transparent hover:bg-white hover:text-black uppercase"
-          href={
-            "https://cloud.appwrite.io/v1/storage/buckets/648b82ed147445b54f1e/files/648b82fd4b2b31a272c0/view?project=648b8256bc833c7ec3e0&mode=admin"
-          }
-        >
-          <span className=" hidden md:block">Download</span>Resume
-        </Link>
+<ResumeDownloadButton/>
       </div>
     </nav>
   );
