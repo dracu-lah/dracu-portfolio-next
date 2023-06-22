@@ -15,11 +15,11 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className="flex space-x-4 overflow-x-scroll max-w-xs md:max-w-[70vh] lg:max-w-[100vh]">
+    <div className="flex space-x-4 overflow-x-scroll overflow-y-hidden max-w-xs md:max-w-[70vh] lg:max-w-[100vh]">
       {projects.map((itm) => (
         <div
           key={itm.$id}
-          className=" rounded-sm  shadow-lg bg-gray-900 min-w-[320px]  "
+          className=" min-h-[512px] min-w-[320px]  rounded-sm  shadow-lg bg-gray-900 "
         >
           <Link href={itm.project_link}>
             <Image
@@ -39,11 +39,12 @@ const Projects = () => {
               {itm.project_meta_description}
             </p>
           </div>
-          <div className="px-6 pt-4 pb-2">
+          <div className="max-w-[90vh] px-4 overflow-hidden">
             {itm.project_skills.map((skill, key) => (
               <span
                 key={key}
-                className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-900 mr-2 mb-2 hover:bg-white cursor-pointer"
+                className="text-sky-950 font-bold bg-slate-100  rounded-full px-2 py-1.5 text-xs m-1 inline-block"
+                // className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-900 mr-2 mb-2 hover:bg-white cursor-pointer"
               >
                 #{skill}
               </span>
