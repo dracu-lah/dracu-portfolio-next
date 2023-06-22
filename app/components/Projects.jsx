@@ -7,19 +7,14 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-
-    let promise = databases.listDocuments(
-      "648b831eb80f41aa8b37",
-      "648b83371bf4cf374971"
-    );
-    promise.then(
-      function (response) {
-        setProjects(response.documents);
-      },
-      async function (error) {
-        console.log(error);
-      }
-    );
+    async function fetchData() {
+      const response = await databases.listDocuments(
+        "648b831eb80f41aa8b37",
+        "648b83371bf4cf374971"
+      );
+      setProjects(response.documents);
+    }
+    fetchData();
   }, []);
 
   return (
