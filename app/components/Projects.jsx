@@ -15,7 +15,8 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className="flex justify-center md:flex-row m-4 max-w-xs  md:max-w-4xl lg:max-w-screen-lg gap-4 overflow-x-scroll">
+    // <div className="flex justify-center md:flex-row m-4 max-w-xs  md:max-w-4xl lg:max-w-screen-lg gap-4 overflow-x-scroll">
+    <div className="flex space-x-4 overflow-x-scroll max-w-xs md:max-w-[70vh] lg:max-w-[100vh]">
       {projects.map((itm) => (
         <div
           key={itm.$id}
@@ -26,12 +27,14 @@ const Projects = () => {
               height={480}
               width={640}
               src={itm.img_url}
-              className="cursor-pointer hover:opacity-40 duration-300 "
+              className="cursor-pointer h-40 hover:opacity-40 duration-300 "
               alt={itm.project_title}
             />
           </Link>
           <div className="px-6 py-4">
-            <div className="font-bold text-xl  text-left">{itm.project_title}</div>
+            <div className="font-bold text-xl  text-left">
+              {itm.project_title}
+            </div>
 
             <p className="text-gray-400 text-justify">
               {itm.project_meta_description}
