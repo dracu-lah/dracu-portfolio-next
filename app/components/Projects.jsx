@@ -15,7 +15,6 @@ const Projects = () => {
   }, []);
 
   return (
-    // <div className="flex justify-center md:flex-row m-4 max-w-xs  md:max-w-4xl lg:max-w-screen-lg gap-4 overflow-x-scroll">
     <div className="flex space-x-4 overflow-x-scroll max-w-xs md:max-w-[70vh] lg:max-w-[100vh]">
       {projects.map((itm) => (
         <div
