@@ -6,7 +6,7 @@ const PortfolioSection = () => {
     <>
       <section
         id="portfolio"
-        className="min-h-screen flex flex-col gap-y-10 justify-start items-center"
+        className="min-h-screen flex flex-col justify-start items-center gap-10 m-4"
       >
         <h1 className="text-4xl  px-10 font-bold text-center pt-40">
           Portfolio & Previous Projects

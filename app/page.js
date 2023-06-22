@@ -14,7 +14,7 @@ export default function Home() {
       <main className="bg-gradient-to-br from-gray-900 via-gray-800/20 to-gray-900 overflow-x-hidden">
         <Navbar />
         <HeroSection />
-        <hr className="max-w-xs mx-auto"></hr>
+        <hr className="my-2 max-w-xs mx-auto"></hr>
         <AboutSection />
         <hr className="max-w-xs mx-auto"></hr>
         <SkillsSection />
