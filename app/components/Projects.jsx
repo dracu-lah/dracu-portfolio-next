@@ -2,16 +2,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { databases } from "../utils/appWrite";
+import { database, databases, projects_cid } from "../utils/appWrite";
 const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await databases.listDocuments(
-        "648b831eb80f41aa8b37",
-        "648b83371bf4cf374971"
-      );
+      const response = await databases.listDocuments(database, projects_cid);
       setProjects(response.documents);
     }
     fetchData();

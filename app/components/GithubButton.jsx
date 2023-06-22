@@ -1,25 +1,17 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { databases } from "../utils/appWrite";
+import { database, databases, socials_cid } from "../utils/appWrite";
 
 const GithubButton = () => {
   const [githubURL, setGithubURL] = useState("");
   useEffect(() => {
+    async function getGithubURL() {
+      const response = await databases.listDocuments(database, socials_cid);
+      setGithubURL(response.documents[0].github_url);
+    }
 
-    let promise = databases.listDocuments(
-      "648b831eb80f41aa8b37",
-      "648bf3fb6afc137df487"
-    );
-    promise.then(
-      function (response) {
-        setGithubURL(response.documents[0].github_url);
-        // console.log(response.documents);
-      },
-      async function (error) {
-        console.log(error);
-      }
-    );
+    getGithubURL();
   }, []);
   return (
     <Link
