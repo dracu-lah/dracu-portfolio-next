@@ -1,5 +1,5 @@
 # My Portfolio Website
-![image](https://github.com/dracu-lah/dracu-portfolio-next/assets/110589548/d6ab55e5-5c13-4bcb-b4ed-fba8b7af6e43)(https://dracufolio.vercel.app/)
+![image][(https://github.com/dracu-lah/dracu-portfolio-next/assets/110589548/d6ab55e5-5c13-4bcb-b4ed-fba8b7af6e43)](https://dracufolio.vercel.app/)
 
 Welcome to my portfolio website! This website showcases my projects and provides information about me. It is built using Next.js and integrates with Appwrite for backend services. The website incorporates various libraries and features like emailJS, react-hook-form, framer-motion, etc.
 
