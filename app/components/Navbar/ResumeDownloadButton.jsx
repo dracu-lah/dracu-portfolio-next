@@ -1,25 +1,17 @@
 "use client";
+import { resume_bid, storage } from "@/app/utils/appWrite";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-import { Storage } from "appwrite";
-import client from "@/app/utils/appWrite";
 const ResumeDownloadButton = () => {
   const [fileID, setFileID] = useState("");
   useEffect(() => {
-    const storage = new Storage(client);
-
-    storage
-      .listFiles("648b82ed147445b54f1e")
-      .then((response) => {
-        console.log(response); // Success
-        setFileID(response.files[0].$id);
-      })
-      .catch((error) => {
-        console.log(error); // Failure
-      });
+    async function getResumeID() {
+      const response = await storage.listFiles(resume_bid);
+      setFileID(response.files[0].$id);
+    }
+    getResumeID();
   }, []);
-
   return (
     <Link
       className="border-4 gap-2  p-2 md:p-4  duration-300 text-xs md:text-sm flex font-bold bg-transparent hover:bg-white hover:text-black uppercase"

@@ -1,6 +1,5 @@
 "use client";
-import client from "@/app/utils/appWrite";
-import { Storage } from "appwrite";
+import { skills_photos_bid, storage } from "@/app/utils/appWrite";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -8,28 +7,18 @@ import React, { useEffect, useState } from "react";
 const SkillsSection = () => {
   const [skills, setSkills] = useState([]);
   useEffect(() => {
-    const bucketid = "648b85d925a96d32d702";
-    const storage = new Storage(client);
+    async function getSkills() {
+      const response = await storage.listFiles(skills_photos_bid);
+      const results = [];
 
-    const promise = storage.listFiles(bucketid);
-
-    promise.then(
-      function (response) {
-        // console.log(response); // Success
-        let results = [];
-        for (const item of response.files) {
-          // console.log(item.$id);
-          const result = storage.getFilePreview(bucketid, item.$id);
-          results.push(result);
-        }
-        setSkills(results);
-
-        // console.log(results[0].href);
-      },
-      function (error) {
-        console.log(error); // Failure
+      for (const item of response.files) {
+        const result = storage.getFilePreview(skills_photos_bid, item.$id);
+        results.push(result);
       }
-    );
+
+      setSkills(results);
+    }
+    getSkills();
   }, []);
   return (
     <section

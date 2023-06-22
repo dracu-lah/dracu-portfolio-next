@@ -2,26 +2,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import client from "../utils/appWrite";
-import { Databases } from "appwrite";
+import { database, databases, projects_cid } from "../utils/appWrite";
 const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    const databases = new Databases(client);
-
-    let promise = databases.listDocuments(
-      "648b831eb80f41aa8b37",
-      "648b83371bf4cf374971"
-    );
-    promise.then(
-      function (response) {
-        setProjects(response.documents);
-      },
-      async function (error) {
-        console.log(error);
-      }
-    );
+    async function fetchData() {
+      const response = await databases.listDocuments(database, projects_cid);
+      setProjects(response.documents);
+    }
+    fetchData();
   }, []);
 
   return (
