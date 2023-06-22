@@ -1,5 +1,4 @@
 import React from "react";
-import "./Navbar.css";
 import Link from "next/link";
 import ResumeDownloadButton from "./ResumeDownloadButton";
 const Navbar = () => {
