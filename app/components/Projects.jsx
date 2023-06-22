@@ -31,9 +31,9 @@ const Projects = () => {
             />
           </Link>
           <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">{itm.project_title}</div>
+            <div className="font-bold text-xl  text-left">{itm.project_title}</div>
 
-            <p className="text-gray-400 text-base">
+            <p className="text-gray-400 text-justify">
               {itm.project_meta_description}
             </p>
           </div>

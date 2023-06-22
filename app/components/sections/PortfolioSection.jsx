@@ -6,9 +6,9 @@ const PortfolioSection = () => {
     <>
       <section
         id="portfolio"
-        className="min-h-screen flex flex-col gap-y-10 justify-center items-center"
+        className="min-h-screen flex flex-col gap-y-10 justify-start items-center"
       >
-        <h1 className="text-4xl font-bold text-center p-2">
+        <h1 className="text-4xl  px-10 font-bold text-center pt-40">
           Portfolio & Previous Projects
         </h1>
         <Projects />
