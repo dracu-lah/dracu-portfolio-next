@@ -44,7 +44,6 @@ const Projects = () => {
               <span
                 key={key}
                 className="text-sky-950 font-bold bg-slate-100  rounded-full px-2 py-1.5 text-xs m-1 inline-block"
-                // className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-900 mr-2 mb-2 hover:bg-white cursor-pointer"
               >
                 #{skill}
               </span>
