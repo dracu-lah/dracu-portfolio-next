@@ -1,12 +1,9 @@
 "use client";
+import { databases } from "@/app/utils/appWrite";
 import React, { useEffect, useState } from "react";
-import client from "@/app/utils/appWrite";
-
-import { Databases } from "appwrite";
 const AboutSection = () => {
   const [description, setDescription] = useState("");
   useEffect(() => {
-    const databases = new Databases(client);
 
     let promise = databases.listDocuments(
       "648b831eb80f41aa8b37",

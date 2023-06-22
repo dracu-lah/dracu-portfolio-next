@@ -1,13 +1,11 @@
 "use client";
+import { storage } from "@/app/utils/appWrite";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-import { Storage } from "appwrite";
-import client from "@/app/utils/appWrite";
 const ResumeDownloadButton = () => {
   const [fileID, setFileID] = useState("");
   useEffect(() => {
-    const storage = new Storage(client);
 
     storage
       .listFiles("648b82ed147445b54f1e")

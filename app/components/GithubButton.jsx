@@ -1,13 +1,11 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import client from "@/app/utils/appWrite";
-import { Databases } from "appwrite";
+import { databases } from "../utils/appWrite";
 
 const GithubButton = () => {
   const [githubURL, setGithubURL] = useState("");
   useEffect(() => {
-    const databases = new Databases(client);
 
     let promise = databases.listDocuments(
       "648b831eb80f41aa8b37",

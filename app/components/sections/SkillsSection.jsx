@@ -1,6 +1,5 @@
 "use client";
-import client from "@/app/utils/appWrite";
-import { Storage } from "appwrite";
+import { storage } from "@/app/utils/appWrite";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -9,7 +8,6 @@ const SkillsSection = () => {
   const [skills, setSkills] = useState([]);
   useEffect(() => {
     const bucketid = "648b85d925a96d32d702";
-    const storage = new Storage(client);
 
     const promise = storage.listFiles(bucketid);
 

@@ -2,13 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import client from "../utils/appWrite";
-import { Databases } from "appwrite";
+import { databases } from "../utils/appWrite";
 const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    const databases = new Databases(client);
 
     let promise = databases.listDocuments(
       "648b831eb80f41aa8b37",
