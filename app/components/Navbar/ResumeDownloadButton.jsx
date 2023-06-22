@@ -6,18 +6,13 @@ import React, { useEffect, useState } from "react";
 const ResumeDownloadButton = () => {
   const [fileID, setFileID] = useState("");
   useEffect(() => {
-
-    storage
-      .listFiles("648b82ed147445b54f1e")
-      .then((response) => {
-        // console.log(response); // Success
-        setFileID(response.files[0].$id);
-      })
-      .catch((error) => {
-        console.log(error); // Failure
-      });
+    async function getResumeID() {
+      const response = await storage.listFiles("648b82ed147445b54f1e");
+      setFileID(response.files[0].$id);
+    }
+    getResumeID();
   }, []);
-
+  console.log(fileID);
   return (
     <Link
       className="border-4 gap-2  p-2 md:p-4  duration-300 text-xs md:text-sm flex font-bold bg-transparent hover:bg-white hover:text-black uppercase"
