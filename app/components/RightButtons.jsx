@@ -3,7 +3,7 @@ import React from "react";
 
 const RightButtons = () => {
   return (
-    <div className=" text-xs hidden md:block">
+    <div className=" text-xs font-bold hidden md:block">
       <Link href="#hero" className=" rightButton bottom-[50vh] ">
         1
       </Link>
