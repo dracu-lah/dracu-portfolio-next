@@ -12,7 +12,7 @@ const ResumeDownloadButton = () => {
     storage
       .listFiles("648b82ed147445b54f1e")
       .then((response) => {
-        console.log(response); // Success
+        // console.log(response); // Success
         setFileID(response.files[0].$id);
       })
       .catch((error) => {
