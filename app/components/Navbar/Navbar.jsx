@@ -1,5 +1,4 @@
 import React from "react";
-import "./Navbar.css";
 import Link from "next/link";
 import ResumeDownloadButton from "./ResumeDownloadButton";
 const Navbar = () => {
@@ -18,7 +17,7 @@ const Navbar = () => {
             fill="aliceblue"
           ></path>
           <rect
-            className="blinkit pulse faster opacity-0 "
+            className="animate-pulse opacity-10"
             x="45"
             y="44"
             width="29"

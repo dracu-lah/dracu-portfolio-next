@@ -22,7 +22,7 @@ const SkillsSection = () => {
     getSkills();
   }, []);
   const [scope, animate] = useAnimate();
-  const isInView = useInView(scope, { once: true });
+  const isInView = useInView(scope,{once:true});
   useEffect(() => {
     if (isInView) {
       const enterAnimation = async () => {
