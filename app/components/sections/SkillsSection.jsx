@@ -3,27 +3,7 @@ import { skills_photos_bid, storage } from "@/app/utils/appWrite";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-
-const container = {
-  hidden: { opacity: 1, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const item = {
-  hidden: { y: -20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-  },
-};
+import { stagger, useAnimate, useInView } from "framer-motion";
 
 const SkillsSection = () => {
   const [skills, setSkills] = useState([]);
@@ -41,7 +21,20 @@ const SkillsSection = () => {
     }
     getSkills();
   }, []);
-
+  const [scope, animate] = useAnimate();
+  const isInView = useInView(scope,{once:true});
+  useEffect(() => {
+    if (isInView) {
+      const enterAnimation = async () => {
+        await animate(
+          scope.current,
+          { opacity: [0, 1], y: [100, 0] },
+          { duration: 1 }
+        );
+      };
+      enterAnimation();
+    }
+  }, [isInView]);
   return (
     <section
       id="skills"
@@ -74,14 +67,9 @@ const SkillsSection = () => {
           for more details.
         </h3>
       </div>
-      <motion.ul
-        variants={container}
-        initial="hidden"
-        animate="visible"
-        className="grid grid-cols-3 md:grid-cols-4 gap-8"
-      >
+      <ul ref={scope} className="grid grid-cols-3 md:grid-cols-4 gap-8">
         {skills.map((skill, key) => (
-          <motion.li variants={item} key={key}>
+          <li key={key}>
             <Image
               className="w-auto h-auto"
               width={80}
@@ -89,9 +77,9 @@ const SkillsSection = () => {
               src={skill.href}
               alt={key}
             />
-          </motion.li>
+          </li>
         ))}
-      </motion.ul>
+      </ul>
     </section>
   );
 };
