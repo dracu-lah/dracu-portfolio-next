@@ -3,7 +3,7 @@ import Link from "next/link";
 import ResumeDownloadButton from "./ResumeDownloadButton";
 const Navbar = () => {
   return (
-    <nav className="fixed p-5 md:p-8 flex justify-between  min-w-full z-50  top-0 navbar bg-base-100  border-b border-b-slate-100/10 opacity-90 backdrop-filter backdrop-blur-2xl">
+    <nav className="flex justify-between items-center  p-4 fixed min-w-full z-50 ">
       <Link href="/" className="flex text-3xl font-bold gap-x-2 items-center ">
         <svg
           className="w-9 h-9"
@@ -29,12 +29,12 @@ const Navbar = () => {
       </Link>
       <div className="flex gap-x-2">
         <Link
-          className="border-4  p-2 md:p-4  duration-300 text-xs md:text-sm font-bold bg-transparent hover:bg-white hover:text-black uppercase"
+          className="border-4  p-2 md:p-4  duration-300 text-xs md:text-sm font-bold bg-white/10 backdrop-filter backdrop-blur-lg hover:bg-white hover:text-black uppercase"
           href={"#contact"}
         >
           contact
         </Link>
-<ResumeDownloadButton/>
+        <ResumeDownloadButton />
       </div>
     </nav>
   );

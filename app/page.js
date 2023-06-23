@@ -7,13 +7,14 @@ import SkillsSection from "./components/sections/SkillsSection";
 import PortfolioSection from "./components/sections/PortfolioSection";
 import ContactSection from "./components/sections/ContactSection";
 
-export const revalidate =86400
+export const revalidate = 86400;
 
 export default function Home() {
   return (
     <>
-      <main className="bg-gradient-to-br from-gray-900 via-gray-800/20 to-gray-900 overflow-x-hidden">
-        <Navbar />
+      <main className="bg-gradient-to-br flex flex-col from-gray-900 via-gray-800/20 to-gray-900 overflow-x-hidden">
+      <Navbar />
+
         <HeroSection />
         <hr className="my-2 max-w-xs mx-auto"></hr>
         <AboutSection />
