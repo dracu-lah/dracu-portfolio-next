@@ -2,27 +2,12 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useAnimate } from "framer-motion";
-import Image from "next/image";
 import HeroImage from "../HeroImage";
-async function getData() {
-  const response = await databases.listDocuments(database, hero_image_url_cid);
-  return response;
-}
-
 const HeroSection = () => {
   const [scope, animate] = useAnimate();
   useEffect(() => {
     animate(
       scope.current,
-      { opacity: [0, 1], scale: [0.5, 1] },
-      {
-        duration: 0.8,
-        delay: 0.5,
-        ease: [0, 0.71, 0.2, 1.01],
-      }
-    );
-    animate(
-      "article",
       { opacity: [0, 1], scale: [0.5, 1] },
       {
         duration: 0.3,
@@ -38,11 +23,11 @@ const HeroSection = () => {
   });
   return (
     <section
-      ref={scope}
       id="hero"
       className="min-h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden "
     >
-      <article
+      <ul
+        ref={scope}
         className="relative flex justify-center items-center"
         style={{
           opacity: 1,
@@ -50,12 +35,12 @@ const HeroSection = () => {
           transform: "none",
         }}
       >
-        <div className="absolute rounded-full border border-[#333333] h-[200px] w-[200px] mt-52 animate-ping"></div>
-        <div className="absolute rounded-full border border-[#333333] h-[300px] w-[300px] mt-52 "></div>
-        <div className="absolute rounded-full border border-[#333333] h-[500px] w-[500px] mt-52 "></div>
-        <div className="absolute rounded-full border border-yellow-300 h-[650px] w-[650px] mt-52 opacity-20 animate-pulse"></div>
-        <div className="absolute rounded-full border border-[#333333] h-[800px] w-[800px] mt-52 "></div>
-      </article>
+        <li className="absolute rounded-full border border-[#333333] h-[200px] w-[200px] mt-52 animate-ping"></li>
+        <li className="absolute rounded-full border border-[#333333] h-[300px] w-[300px] mt-52 "></li>
+        <li className="absolute rounded-full border border-[#333333] h-[500px] w-[500px] mt-52 "></li>
+        <li className="absolute rounded-full border border-yellow-300 h-[650px] w-[650px] mt-52 opacity-20 animate-pulse"></li>
+        <li className="absolute rounded-full border border-[#333333] h-[800px] w-[800px] mt-52 "></li>
+      </ul>
       <HeroImage />
       <div className="z-20">
         <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">
