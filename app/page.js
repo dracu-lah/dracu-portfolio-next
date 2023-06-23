@@ -6,7 +6,7 @@ import AboutSection from "./components/sections/AboutSection";
 import SkillsSection from "./components/sections/SkillsSection";
 import PortfolioSection from "./components/sections/PortfolioSection";
 import ContactSection from "./components/sections/ContactSection";
-export const revalidate =10
+export const revalidate =86400
 export default function Home() {
   return (
     <>
