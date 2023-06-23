@@ -2,6 +2,7 @@ import Link from "next/link";
 import HeroImage from "../HeroImage";
 import HeroCircles from "../HeroCircles";
 import TypeWriterText from "../TypeWriterText";
+import Navbar from "../Navbar/Navbar";
 const HeroSection = () => {
   return (
     <section
