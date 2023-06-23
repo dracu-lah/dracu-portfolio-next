@@ -3,6 +3,7 @@ import Link from "next/link";
 import ResumeDownloadButton from "./ResumeDownloadButton";
 const Navbar = () => {
   return (
+
     <nav className="flex justify-between items-center  p-4 fixed min-w-full z-50 ">
       <Link href="/" className="flex text-3xl font-bold gap-x-2 items-center ">
         <svg
