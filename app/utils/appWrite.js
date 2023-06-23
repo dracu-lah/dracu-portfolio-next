@@ -13,6 +13,7 @@ const skills_photos_bid = "648b85d925a96d32d702";
 const socials_cid = "648bf3fb6afc137df487";
 const projects_cid = "648b83371bf4cf374971";
 const resume_bid = "648b82ed147445b54f1e";
+const hero_image_bid = "648bf6e406b47b7a7d94";
 export {
   client,
   account,
@@ -24,4 +25,5 @@ export {
   socials_cid,
   projects_cid,
   resume_bid,
+  hero_image_bid,
 };
