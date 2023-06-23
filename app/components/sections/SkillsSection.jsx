@@ -22,7 +22,7 @@ const SkillsSection = () => {
     getSkills();
   }, []);
   const [scope, animate] = useAnimate();
-  const isInView = useInView(scope,{once:true});
+  const isInView = useInView(scope, { once: true });
   useEffect(() => {
     if (isInView) {
       const enterAnimation = async () => {
@@ -71,6 +71,7 @@ const SkillsSection = () => {
         {skills.map((skill, key) => (
           <li key={key}>
             <Image
+              draggable="false"
               className="w-auto h-auto"
               width={80}
               height={80}

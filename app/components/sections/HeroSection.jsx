@@ -54,7 +54,8 @@ const HeroSection = () => {
         priority={true}
         width={80}
         height={80}
-        className="relative rounded-full h-32 w-32 mx-auto object-cover"
+        draggable="false"
+        className="relative rounded-full h-32 w-32 mx-auto object-cover "
         src="https://cloud.appwrite.io/v1/storage/buckets/648bf6e406b47b7a7d94/files/648bf75487127bdaa4f2/view?project=648b8256bc833c7ec3e0&mode=admin"
         alt="Profile"
       />
