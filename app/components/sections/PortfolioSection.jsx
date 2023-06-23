@@ -11,6 +11,7 @@ const PortfolioSection = () => {
         <h1 className="text-4xl  px-10 font-bold text-center pt-40">
           Portfolio & Previous Projects
         </h1>
+
         <Projects />
       </section>
     </>
