@@ -1,40 +1,20 @@
-"use client";
 import { skills_photos_bid, storage } from "@/app/utils/appWrite";
-import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import {  useAnimate, useInView } from "framer-motion";
+import Skills from "../Skills";
+async function getData() {
+  const response = await storage.listFiles(skills_photos_bid);
+  const results = [];
 
-const SkillsSection = () => {
-  const [skills, setSkills] = useState([]);
-  useEffect(() => {
-    async function getSkills() {
-      const response = await storage.listFiles(skills_photos_bid);
-      const results = [];
+  for (const item of response.files) {
+    const result = storage.getFilePreview(skills_photos_bid, item.$id);
+    results.push(result);
+  }
 
-      for (const item of response.files) {
-        const result = storage.getFilePreview(skills_photos_bid, item.$id);
-        results.push(result);
-      }
+  return results;
+}
+const SkillsSection = async () => {
+  const skillData = await getData();
 
-      setSkills(results);
-    }
-    getSkills();
-  }, []);
-  const [scope, animate] = useAnimate();
-  const isInView = useInView(scope,{once:true});
-  useEffect(() => {
-    if (isInView) {
-      const enterAnimation = async () => {
-        await animate(
-          scope.current,
-          { opacity: [0, 1], y: [100, 0] },
-          { duration: 1 }
-        );
-      };
-      enterAnimation();
-    }
-  }, [isInView]);
   return (
     <section
       id="skills"
@@ -67,20 +47,7 @@ const SkillsSection = () => {
           for more details.
         </h3>
       </div>
-      <ul ref={scope} className="grid grid-cols-3 md:grid-cols-4 gap-8">
-        {skills.map((skill, key) => (
-          <li key={key}>
-            <Image
-              draggable="false"
-              className="w-auto h-auto"
-              width={80}
-              height={80}
-              src={skill.href}
-              alt={key}
-            />
-          </li>
-        ))}
-      </ul>
+      <Skills skills={skillData} />
     </section>
   );
 };
