@@ -1,8 +1,14 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { motion, useAnimate } from "framer-motion";
+import { useAnimate } from "framer-motion";
 import Image from "next/image";
+import HeroImage from "../HeroImage";
+async function getData() {
+  const response = await databases.listDocuments(database, hero_image_url_cid);
+  return response;
+}
+
 const HeroSection = () => {
   const [scope, animate] = useAnimate();
   useEffect(() => {
@@ -50,15 +56,7 @@ const HeroSection = () => {
         <div className="absolute rounded-full border border-yellow-300 h-[650px] w-[650px] mt-52 opacity-20 animate-pulse"></div>
         <div className="absolute rounded-full border border-[#333333] h-[800px] w-[800px] mt-52 "></div>
       </article>
-      <Image
-        priority={true}
-        width={80}
-        height={80}
-        draggable="false"
-        className="relative rounded-full h-32 w-32 mx-auto object-cover "
-        src="https://cloud.appwrite.io/v1/storage/buckets/648bf6e406b47b7a7d94/files/648bf75487127bdaa4f2/view?project=648b8256bc833c7ec3e0&mode=admin"
-        alt="Profile"
-      />
+      <HeroImage />
       <div className="z-20">
         <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">
           Learner

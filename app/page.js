@@ -1,4 +1,3 @@
-// "use client";
 import Navbar from "./components/Navbar/Navbar";
 import GithubButton from "./components/GithubButton";
 import RightButtons from "./components/RightButtons";
@@ -7,7 +6,7 @@ import AboutSection from "./components/sections/AboutSection";
 import SkillsSection from "./components/sections/SkillsSection";
 import PortfolioSection from "./components/sections/PortfolioSection";
 import ContactSection from "./components/sections/ContactSection";
-
+export const revalidate =10
 export default function Home() {
   return (
     <>

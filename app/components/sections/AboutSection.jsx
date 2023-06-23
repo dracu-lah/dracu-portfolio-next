@@ -1,18 +1,12 @@
-"use client";
-import { database, databases,about_section_cid } from "@/app/utils/appWrite";
-import React, { useEffect, useState } from "react";
-const AboutSection = () => {
-  const [description, setDescription] = useState("");
-  useEffect(() => {
-    async function getDescription() {
-      const response = await databases.listDocuments(
-        database,
-        about_section_cid
-      );
-      setDescription(response.documents[0].about_description);
-    }
-    getDescription();
-  }, []);
+import { database, databases, about_section_cid } from "@/app/utils/appWrite";
+
+async function getData() {
+  const response = await databases.listDocuments(database, about_section_cid);
+  return response.documents[0].about_description;
+}
+
+const AboutSection = async () => {
+  const description = await getData();
   return (
     <section
       id="about"
