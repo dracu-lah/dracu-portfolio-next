@@ -16,18 +16,22 @@ const Projects = () => {
   }, []);
 
   const [scope, animate] = useAnimate();
+
   const isInView = useInView(scope, { once: true });
   useEffect(() => {
     if (isInView) {
-      animate(
-        scope.current,
-        { opacity: [0, 1], scale: [0.5, 1] },
-        {
-          duration: 0.8,
-          delay: 0.5,
-          ease: [0, 0.71, 0.2, 1.01],
-        }
-      );
+      const enterAnimation = async () => {
+        await animate(
+          scope.current,
+          { opacity: [0, 1], scale: [0.5, 1] },
+          {
+            duration: 0.8,
+            delay: 0.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }
+        );
+      };
+      enterAnimation();
     }
   }, [isInView]);
 
