@@ -8,6 +8,7 @@ const HeroSection = () => {
       id="hero"
       className="min-h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden pt-40"
     >
+
         <HeroCircles />
         <HeroImage />
         <div className="z-20">
@@ -26,6 +27,7 @@ const HeroSection = () => {
               Projects
             </Link>
           </div>
+
         </div>
     </section>
   );
