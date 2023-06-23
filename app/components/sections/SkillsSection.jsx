@@ -3,6 +3,7 @@ import { skills_photos_bid, storage } from "@/app/utils/appWrite";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { stagger, useAnimate, useInView } from "framer-motion";
 
 const SkillsSection = () => {
   const [skills, setSkills] = useState([]);
@@ -20,6 +21,20 @@ const SkillsSection = () => {
     }
     getSkills();
   }, []);
+  const [scope, animate] = useAnimate();
+  const isInView = useInView(scope,{once:true});
+  useEffect(() => {
+    if (isInView) {
+      const enterAnimation = async () => {
+        await animate(
+          scope.current,
+          { opacity: [0, 1], y: [100, 0] },
+          { duration: 1 }
+        );
+      };
+      enterAnimation();
+    }
+  }, [isInView]);
   return (
     <section
       id="skills"
@@ -52,9 +67,9 @@ const SkillsSection = () => {
           for more details.
         </h3>
       </div>
-      <div className="grid grid-cols-3 md:grid-cols-4 gap-8">
+      <ul ref={scope} className="grid grid-cols-3 md:grid-cols-4 gap-8">
         {skills.map((skill, key) => (
-          <div key={key}>
+          <li key={key}>
             <Image
               className="w-auto h-auto"
               width={80}
@@ -62,9 +77,9 @@ const SkillsSection = () => {
               src={skill.href}
               alt={key}
             />
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 };

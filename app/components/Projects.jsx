@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { database, databases, projects_cid } from "../utils/appWrite";
+import { motion, useAnimate, useInView } from "framer-motion";
 const Projects = () => {
   const [projects, setProjects] = useState([]);
 
@@ -14,8 +15,31 @@ const Projects = () => {
     fetchData();
   }, []);
 
+  const [scope, animate] = useAnimate();
+
+  const isInView = useInView(scope, { once: true });
+  useEffect(() => {
+    if (isInView) {
+      const enterAnimation = async () => {
+        await animate(
+          scope.current,
+          { opacity: [0, 1], scale: [0.5, 1] },
+          {
+            duration: 0.8,
+            delay: 0.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }
+        );
+      };
+      enterAnimation();
+    }
+  }, [isInView]);
+
   return (
-    <div className="flex space-x-4 overflow-x-scroll overflow-y-hidden max-w-xs md:max-w-[70vh] lg:max-w-[100vh]">
+    <div
+      ref={scope}
+      className="flex space-x-4 overflow-x-scroll overflow-y-hidden max-w-xs md:max-w-[70vh] lg:max-w-[100vh]"
+    >
       {projects.map((itm) => (
         <div
           key={itm.$id}
