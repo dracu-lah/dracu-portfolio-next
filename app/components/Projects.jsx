@@ -47,6 +47,7 @@ const Projects = () => {
         >
           <Link href={itm.project_link}>
             <Image
+              draggable="false"
               height={480}
               width={640}
               src={itm.img_url}

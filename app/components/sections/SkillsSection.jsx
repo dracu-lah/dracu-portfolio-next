@@ -71,6 +71,7 @@ const SkillsSection = () => {
         {skills.map((skill, key) => (
           <li key={key}>
             <Image
+              draggable="false"
               className="w-auto h-auto"
               width={80}
               height={80}
