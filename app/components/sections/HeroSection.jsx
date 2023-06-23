@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { motion, useAnimate } from "framer-motion";
+import {  useAnimate } from "framer-motion";
 import Image from "next/image";
 const HeroSection = () => {
   const [scope, animate] = useAnimate();
