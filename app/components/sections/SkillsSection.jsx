@@ -3,7 +3,7 @@ import { skills_photos_bid, storage } from "@/app/utils/appWrite";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { stagger, useAnimate, useInView } from "framer-motion";
+import {  useAnimate, useInView } from "framer-motion";
 
 const SkillsSection = () => {
   const [skills, setSkills] = useState([]);
