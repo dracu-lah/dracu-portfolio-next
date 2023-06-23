@@ -3,6 +3,27 @@ import { skills_photos_bid, storage } from "@/app/utils/appWrite";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { y: -20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
 
 const SkillsSection = () => {
   const [skills, setSkills] = useState([]);
@@ -20,6 +41,7 @@ const SkillsSection = () => {
     }
     getSkills();
   }, []);
+
   return (
     <section
       id="skills"
@@ -52,9 +74,14 @@ const SkillsSection = () => {
           for more details.
         </h3>
       </div>
-      <div className="grid grid-cols-3 md:grid-cols-4 gap-8">
+      <motion.ul
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-3 md:grid-cols-4 gap-8"
+      >
         {skills.map((skill, key) => (
-          <div key={key}>
+          <motion.li variants={item} key={key}>
             <Image
               className="w-auto h-auto"
               width={80}
@@ -62,9 +89,9 @@ const SkillsSection = () => {
               src={skill.href}
               alt={key}
             />
-          </div>
+          </motion.li>
         ))}
-      </div>
+      </motion.ul>
     </section>
   );
 };

@@ -28,11 +28,10 @@ const RightButtons = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  console.log(activeSection);
   return (
     <div className=" text-xs font-bold hidden md:block">
       <Link
-        href="#hero"
+        href={"/"}
         className={` rightButton bottom-[50vh] ${
           activeSection === "hero" && `  text-black bg-slate-100`
         } `}
