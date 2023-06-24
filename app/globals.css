@@ -26,7 +26,7 @@ body {
 /* custom tailwind css */
 @layer utilities {
   .heroButton {
-    @apply border-2 border-yellow-100 animate-bounce hover:animate-none font-semibold py-2 px-4  text-lg md:text-sm rounded-full hover:bg-white hover:text-black duration-500;
+    @apply border-4 text-white/60  border-white/40 animate-bounce hover:animate-none font-bold py-2 px-4  text-lg md:text-sm rounded-full hover:border-none hover:bg-white/80 hover:text-black duration-300 backdrop-filter backdrop-blur-lg
   }
   .rightButton {
     @apply fixed right-0 m-5 border-2 border-slate-300 duration-300 hover:bg-slate-100 hover:text-black   cursor-pointer p-2;
