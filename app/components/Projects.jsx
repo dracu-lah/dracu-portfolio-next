@@ -10,11 +10,11 @@ const Projects = async () => {
   const projects = await getData();
 
   return (
-    <div className="flex space-x-4 overflow-x-scroll overflow-y-hidden max-w-xs md:max-w-[70vh] lg:max-w-[100vh] duration-300">
+    <div className="flex space-x-4 snap-x snap-proximity overflow-x-scroll overflow-y-hidden max-w-xs md:max-w-[70vh] lg:max-w-[62rem] duration-300">
       {projects.map((itm) => (
         <div
           key={itm.$id}
-          className=" min-h-[512px] min-w-[320px]  rounded-sm  shadow-lg bg-gray-900 "
+          className=" min-h-[512px] min-w-[320px] snap-center md:snap-start rounded-sm  shadow-lg bg-gray-900 "
         >
           <Link href={itm.project_link}>
             <Image
