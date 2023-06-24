@@ -12,7 +12,7 @@ export const revalidate = 86400;
 export default function Home() {
   return (
     <>
-      <main className="bg-gradient-to-br  from-gray-900 via-gray-800/20 to-gray-900 overflow-x-hidden">
+      <main className="bg-gradient-to-br snap-y snap-mandatory from-gray-900 via-gray-800/20 to-gray-900 overflow-x-hidden">
         <Navbar />
 
         <HeroSection />
