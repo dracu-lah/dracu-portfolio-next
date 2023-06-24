@@ -1,5 +1,4 @@
 # My Portfolio Website
-[![MasterHead](https://github-production-user-asset-6210df.s3.amazonaws.com/110589548/248020706-d6ab55e5-5c13-4bcb-b4ed-fba8b7af6e43.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230622%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230622T182258Z&X-Amz-Expires=300&X-Amz-Signature=3d3fc50182300f879006134f60da1ac8fc64e779ac07bcc54c089c18827fb339&X-Amz-SignedHeaders=host&actor_id=110589548&key_id=0&repo_id=654341221)](https://dracufolio.vercel.app/)
 
 Welcome to my portfolio website! This website showcases my projects and provides information about me. It is built using Next.js and integrates with Appwrite for backend services. The website incorporates various libraries and features like emailJS, react-hook-form, framer-motion, etc.
 
