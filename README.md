@@ -17,16 +17,15 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/dracu-lah/dracu-portfolio-next.git
-
-```
+    ```bash
+    git clone https://github.com/dracu-lah/dracu-portfolio-next.git
+    ```
 2. Install the dependencies:
 
-```bash
-cd dracu-portfolio-next
-npm install
-```
+    ```bash
+    cd dracu-portfolio-next
+    npm install
+    ```
 
 3. Configure Appwrite:
 
@@ -39,8 +38,8 @@ npm install
     Obtain your emailJS user ID and update the configuration in the project code. This is usually located in the app/components/contact.jsx file.
 
 5. Start the Next.js development server:
-  ```
-  npm run dev
-  ```
+   ```
+    npm run dev
+   ```
 
 6. Open your browser and visit http://localhost:3000 to see the website running locally.
