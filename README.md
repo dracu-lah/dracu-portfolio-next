@@ -30,13 +30,13 @@ npm install
 
 3. Configure Appwrite:
 
-  Set up an Appwrite server by following the instructions in the Appwrite documentation: Appwrite Documentation.
-  Update the Appwrite configuration in the project code to connect to your Appwrite server. This is usually located in the app/utils/appWrite.js file.
+    Set up an Appwrite server by following the instructions in the Appwrite documentation: Appwrite Documentation.
+    Update the Appwrite configuration in the project code to connect to your Appwrite server. This is usually located in the app/utils/appWrite.js file.
 
 4.Configure EmailJS:
 
-  Sign up for an emailJS account at emailJS.
-  Obtain your emailJS user ID and update the configuration in the project code. This is usually located in the app/components/contact.jsx file.
+    Sign up for an emailJS account at emailJS.
+    Obtain your emailJS user ID and update the configuration in the project code. This is usually located in the app/components/contact.jsx file.
 
 5.Start the Next.js development server:
   ```
