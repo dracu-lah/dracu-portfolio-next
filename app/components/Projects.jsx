@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { database, databases, projects_cid } from "../utils/appWrite";
+import { Query } from "appwrite";
 async function getData() {
-  const response = await databases.listDocuments(database, projects_cid);
+  const response = await databases.listDocuments(database, projects_cid, [
+    Query.orderDesc("$createdAt"),
+  ]);
 
   return response.documents;
 }
