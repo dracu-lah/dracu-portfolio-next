@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
-import { account } from "@/utils/appwrite";
+import { account } from "@/utils/appWrite";
 import { ID } from "appwrite";
 
 export const useAuth = () => {

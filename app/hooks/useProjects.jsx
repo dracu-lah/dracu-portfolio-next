@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { databases, database, projects_cid } from "@/utils/appwrite";
+import { databases, database, projects_cid } from "@/utils/appWrite";
 import { ID, Query } from "appwrite";
 import { useAuth } from "./useAuth";
 
