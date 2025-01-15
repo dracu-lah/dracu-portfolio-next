@@ -1,168 +1,188 @@
 "use client";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { account } from "@/utils/appWrite";
 import { ID } from "appwrite";
 
 export const useAuth = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState(null);
-  const [loginError, setLoginError] = useState("");
+  const [authState, setAuthState] = useState({
+    isLoggedIn: false,
+    user: null,
+    loginError: "",
+    isLoading: true,
+  });
 
-  // Memoize the states to avoid unnecessary re-renders
-  const memoizedUser = useMemo(() => user, [user]);
-  const memoizedIsLoggedIn = useMemo(() => isLoggedIn, [isLoggedIn]);
-  const memoizedLoginError = useMemo(() => loginError, [loginError]);
+  const setAuth = useCallback((updates) => {
+    setAuthState((prevState) => ({ ...prevState, ...updates }));
+  }, []);
 
-  // Check session on mount and when window gains focus
   useEffect(() => {
-    checkSession();
-
-    // Recheck session when window gains focus
-    const handleFocus = () => {
-      checkSession();
+    const checkSession = async () => {
+      try {
+        const session = await account.getSession("current");
+        if (session) {
+          const userData = await account.get();
+          setAuth({
+            isLoggedIn: true,
+            user: userData,
+            loginError: "",
+            isLoading: false,
+          });
+        } else {
+          setAuth({
+            isLoggedIn: false,
+            user: null,
+            loginError: "",
+            isLoading: false,
+          });
+        }
+      } catch (error) {
+        setAuth({
+          isLoggedIn: false,
+          user: null,
+          loginError: error.message || "No active session",
+          isLoading: false,
+        });
+      }
     };
 
+    checkSession();
+
+    const handleFocus = () => checkSession();
     window.addEventListener("focus", handleFocus);
+
     return () => {
       window.removeEventListener("focus", handleFocus);
     };
-  }, []); // Empty dependency array to run only once when component mounts
+  }, [setAuth]);
 
-  // Check if user has an active session
-  const checkSession = useCallback(async () => {
-    try {
-      const session = await account.getSession("current");
-      if (session) {
-        setIsLoggedIn(true);
-        const userData = await account.get();
-        setUser(userData);
-      } else {
-        setIsLoggedIn(false);
-        setUser(null);
-      }
-    } catch (error) {
-      console.log("No active session");
-      setIsLoggedIn(false);
-      setUser(null);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  // Handle login
-  const handleLogin = useCallback(async ({ email, password }) => {
-    setLoginError("");
-    setIsLoading(true);
-
-    try {
-      await account.createEmailSession(email, password);
-      const userData = await account.get();
-      setUser(userData);
-      setIsLoggedIn(true);
-      return { success: true };
-    } catch (error) {
-      setLoginError(error.message || "Invalid credentials");
-      return { success: false, error: error.message };
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  // Handle registration
-  const handleRegister = useCallback(
-    async ({ email, password, name }) => {
-      setLoginError("");
-      setIsLoading(true);
-
+  const handleLogin = useCallback(
+    async ({ email, password }) => {
+      setAuth({ loginError: "", isLoading: true });
       try {
-        await account.create(ID.unique(), email, password, name);
-        // Login after successful registration
-        return await handleLogin({ email, password });
+        await account.createEmailSession(email, password);
+        const userData = await account.get();
+        setAuth({
+          isLoggedIn: true,
+          user: userData,
+          loginError: "",
+          isLoading: false,
+        });
+        return { success: true };
       } catch (error) {
-        setLoginError(error.message || "Registration failed");
+        setAuth({
+          loginError: error.message || "Invalid credentials",
+          isLoading: false,
+        });
         return { success: false, error: error.message };
-      } finally {
-        setIsLoading(false);
       }
     },
-    [handleLogin],
+    [setAuth],
   );
 
-  // Handle logout
+  const handleRegister = useCallback(
+    async ({ email, password, name }) => {
+      setAuth({ loginError: "", isLoading: true });
+      try {
+        await account.create(ID.unique(), email, password, name);
+        return await handleLogin({ email, password });
+      } catch (error) {
+        setAuth({
+          loginError: error.message || "Registration failed",
+          isLoading: false,
+        });
+        return { success: false, error: error.message };
+      }
+    },
+    [handleLogin, setAuth],
+  );
+
   const handleLogout = useCallback(async () => {
-    setIsLoading(true);
+    setAuth({ isLoading: true });
     try {
       await account.deleteSession("current");
-      setIsLoggedIn(false);
-      setUser(null);
+      setAuth({
+        isLoggedIn: false,
+        user: null,
+        loginError: "",
+        isLoading: false,
+      });
       return { success: true };
     } catch (error) {
-      console.error("Error logging out:", error);
+      setAuth({
+        loginError: error.message || "Error logging out",
+        isLoading: false,
+      });
       return { success: false, error: error.message };
-    } finally {
-      setIsLoading(false);
     }
-  }, []);
+  }, [setAuth]);
 
-  // Handle password reset request
-  const handlePasswordReset = useCallback(async (email) => {
-    setIsLoading(true);
-    try {
-      await account.createRecovery(
-        email,
-        "http://your-domain.com/reset-password",
-      );
-      return { success: true };
-    } catch (error) {
-      setLoginError(error.message || "Password reset failed");
-      return { success: false, error: error.message };
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+  const handlePasswordReset = useCallback(
+    async (email) => {
+      setAuth({ loginError: "", isLoading: true });
+      try {
+        await account.createRecovery(
+          email,
+          "http://your-domain.com/reset-password",
+        );
+        return { success: true };
+      } catch (error) {
+        setAuth({
+          loginError: error.message || "Password reset failed",
+          isLoading: false,
+        });
+        return { success: false, error: error.message };
+      }
+    },
+    [setAuth],
+  );
 
-  // Handle password update
-  const handleUpdatePassword = useCallback(async (oldPassword, newPassword) => {
-    setIsLoading(true);
-    try {
-      await account.updatePassword(newPassword, oldPassword);
-      return { success: true };
-    } catch (error) {
-      setLoginError(error.message || "Password update failed");
-      return { success: false, error: error.message };
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+  const handleUpdatePassword = useCallback(
+    async (oldPassword, newPassword) => {
+      setAuth({ loginError: "", isLoading: true });
+      try {
+        await account.updatePassword(newPassword, oldPassword);
+        return { success: true };
+      } catch (error) {
+        setAuth({
+          loginError: error.message || "Password update failed",
+          isLoading: false,
+        });
+        return { success: false, error: error.message };
+      }
+    },
+    [setAuth],
+  );
 
-  // Handle user profile update
-  const handleUpdateProfile = useCallback(async (updates) => {
-    setIsLoading(true);
-    try {
-      const updatedUser = await account.updatePrefs(updates);
-      setUser((prevUser) => ({
-        ...prevUser,
-        prefs: updatedUser.prefs,
-      }));
-      return { success: true };
-    } catch (error) {
-      return { success: false, error: error.message };
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+  const handleUpdateProfile = useCallback(
+    async (updates) => {
+      setAuth({ isLoading: true });
+      try {
+        const updatedUser = await account.updatePrefs(updates);
+        setAuth({
+          user: { ...authState.user, prefs: updatedUser.prefs },
+          isLoading: false,
+        });
+        return { success: true };
+      } catch (error) {
+        setAuth({
+          loginError: error.message || "Profile update failed",
+          isLoading: false,
+        });
+        return { success: false, error: error.message };
+      }
+    },
+    [authState.user, setAuth],
+  );
 
-  // Clear any auth errors
   const clearErrors = useCallback(() => {
-    setLoginError("");
-  }, []);
+    setAuth({ loginError: "" });
+  }, [setAuth]);
 
   return {
-    isLoggedIn: memoizedIsLoggedIn,
-    isLoading,
-    user: memoizedUser,
-    loginError: memoizedLoginError,
+    isLoggedIn: authState.isLoggedIn,
+    isLoading: authState.isLoading,
+    user: authState.user,
+    loginError: authState.loginError,
     handleLogin,
     handleRegister,
     handleLogout,
@@ -170,6 +190,5 @@ export const useAuth = () => {
     handleUpdatePassword,
     handleUpdateProfile,
     clearErrors,
-    checkSession,
   };
 };

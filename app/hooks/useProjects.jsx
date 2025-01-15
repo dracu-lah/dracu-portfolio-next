@@ -7,7 +7,7 @@ import { useAuth } from "./useAuth";
 export const useProjects = () => {
   const { isLoggedIn } = useAuth();
 
-  // Memoizing the isLoggedIn to avoid unnecessary re-renders
+  // Memoizing isLoggedIn and other states for optimal re-renders
   const memoizedIsLoggedIn = useMemo(() => isLoggedIn, [isLoggedIn]);
 
   const [projects, setProjects] = useState([]);
