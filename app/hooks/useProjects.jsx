@@ -7,7 +7,6 @@ import { useAuth } from "./useAuth";
 export const useProjects = () => {
   const { isLoggedIn } = useAuth();
 
-  // Memoizing isLoggedIn and other states for optimal re-renders
   const memoizedIsLoggedIn = useMemo(() => isLoggedIn, [isLoggedIn]);
 
   const [projects, setProjects] = useState([]);
@@ -152,6 +151,36 @@ export const useProjects = () => {
     [memoizedIsLoggedIn, handleAuthError],
   );
 
+  // New getProject function to fetch a single project by its ID
+  const getProject = useCallback(
+    async (projectId) => {
+      if (!memoizedIsLoggedIn) return null; // Early return if not logged in
+
+      setOperationState({
+        type: "fetch",
+        isLoading: true,
+        error: null,
+      });
+
+      try {
+        const project = await databases.getDocument(
+          database,
+          projects_cid,
+          projectId,
+        );
+        return project;
+      } catch (error) {
+        handleAuthError(error);
+        setOperationState((prev) => ({ ...prev, error }));
+        console.error("Error fetching project:", error);
+        return null;
+      } finally {
+        setOperationState((prev) => ({ ...prev, isLoading: false }));
+      }
+    },
+    [memoizedIsLoggedIn, handleAuthError],
+  );
+
   return {
     projects,
     isLoading,
@@ -159,6 +188,7 @@ export const useProjects = () => {
     addProject,
     deleteProject,
     updateProject,
+    getProject, // Return getProject function
     refreshProjects: fetchProjects,
   };
 };
