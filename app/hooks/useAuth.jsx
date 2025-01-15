@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { account } from "@/utils/appWrite";
 import { ID } from "appwrite";
 
@@ -8,6 +8,11 @@ export const useAuth = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [loginError, setLoginError] = useState("");
+
+  // Memoize the states to avoid unnecessary re-renders
+  const memoizedUser = useMemo(() => user, [user]);
+  const memoizedIsLoggedIn = useMemo(() => isLoggedIn, [isLoggedIn]);
+  const memoizedLoginError = useMemo(() => loginError, [loginError]);
 
   // Check session on mount and when window gains focus
   useEffect(() => {
@@ -22,10 +27,10 @@ export const useAuth = () => {
     return () => {
       window.removeEventListener("focus", handleFocus);
     };
-  }, []);
+  }, []); // Empty dependency array to run only once when component mounts
 
   // Check if user has an active session
-  const checkSession = async () => {
+  const checkSession = useCallback(async () => {
     try {
       const session = await account.getSession("current");
       if (session) {
@@ -43,10 +48,10 @@ export const useAuth = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   // Handle login
-  const handleLogin = async ({ email, password }) => {
+  const handleLogin = useCallback(async ({ email, password }) => {
     setLoginError("");
     setIsLoading(true);
 
@@ -62,27 +67,30 @@ export const useAuth = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   // Handle registration
-  const handleRegister = async ({ email, password, name }) => {
-    setLoginError("");
-    setIsLoading(true);
+  const handleRegister = useCallback(
+    async ({ email, password, name }) => {
+      setLoginError("");
+      setIsLoading(true);
 
-    try {
-      await account.create(ID.unique(), email, password, name);
-      // Login after successful registration
-      return await handleLogin({ email, password });
-    } catch (error) {
-      setLoginError(error.message || "Registration failed");
-      return { success: false, error: error.message };
-    } finally {
-      setIsLoading(false);
-    }
-  };
+      try {
+        await account.create(ID.unique(), email, password, name);
+        // Login after successful registration
+        return await handleLogin({ email, password });
+      } catch (error) {
+        setLoginError(error.message || "Registration failed");
+        return { success: false, error: error.message };
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [handleLogin],
+  );
 
   // Handle logout
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     setIsLoading(true);
     try {
       await account.deleteSession("current");
@@ -95,10 +103,10 @@ export const useAuth = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   // Handle password reset request
-  const handlePasswordReset = async (email) => {
+  const handlePasswordReset = useCallback(async (email) => {
     setIsLoading(true);
     try {
       await account.createRecovery(
@@ -112,10 +120,10 @@ export const useAuth = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   // Handle password update
-  const handleUpdatePassword = async (oldPassword, newPassword) => {
+  const handleUpdatePassword = useCallback(async (oldPassword, newPassword) => {
     setIsLoading(true);
     try {
       await account.updatePassword(newPassword, oldPassword);
@@ -126,10 +134,10 @@ export const useAuth = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   // Handle user profile update
-  const handleUpdateProfile = async (updates) => {
+  const handleUpdateProfile = useCallback(async (updates) => {
     setIsLoading(true);
     try {
       const updatedUser = await account.updatePrefs(updates);
@@ -143,7 +151,7 @@ export const useAuth = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   // Clear any auth errors
   const clearErrors = useCallback(() => {
@@ -151,10 +159,10 @@ export const useAuth = () => {
   }, []);
 
   return {
-    isLoggedIn,
+    isLoggedIn: memoizedIsLoggedIn,
     isLoading,
-    user,
-    loginError,
+    user: memoizedUser,
+    loginError: memoizedLoginError,
     handleLogin,
     handleRegister,
     handleLogout,
@@ -165,27 +173,3 @@ export const useAuth = () => {
     checkSession,
   };
 };
-
-// Optional: Add TypeScript interfaces for better type safety
-/*
-interface LoginCredentials {
-  email: string;
-  password: string;
-}
-
-interface RegisterCredentials extends LoginCredentials {
-  name: string;
-}
-
-interface AuthResponse {
-  success: boolean;
-  error?: string;
-}
-
-interface UserProfile {
-  $id: string;
-  email: string;
-  name: string;
-  prefs: Record<string, any>;
-}
-*/
