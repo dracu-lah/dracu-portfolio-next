@@ -1,0 +1,74 @@
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useProjects } from "@/hooks/useProjects";
+
+const ProjectCard = ({ project }) => {
+  const { deleteProject } = useProjects();
+
+  return (
+    <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="flex justify-between items-start">
+        <div className="flex-1">
+          <div className="flex items-center gap-4">
+            {project.img_url && (
+              <Image
+                src={project.img_url}
+                alt={project.project_title}
+                width={80}
+                height={80}
+                className="rounded-lg object-cover"
+              />
+            )}
+            <div>
+              <h2 className="text-xl font-semibold text-gray-800">
+                {project.project_title}
+              </h2>
+              <p className="text-gray-600 mt-2">
+                {project.project_meta_description}
+              </p>
+            </div>
+          </div>
+          <div className="mt-4">
+            {project.project_skills.map((skill, index) => (
+              <span
+                key={index}
+                className="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+              >
+                #{skill}
+              </span>
+            ))}
+          </div>
+          <Link
+            href={project.project_link}
+            target="_blank"
+            className="text-blue-500 hover:underline mt-2 inline-block"
+          >
+            View Project
+          </Link>
+        </div>
+        <button
+          onClick={() => deleteProject(project.$id)}
+          className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+        >
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default ProjectCard;
