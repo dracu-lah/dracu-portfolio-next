@@ -7,6 +7,7 @@ import Link from "next/link";
 
 const CMSPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [loginError, setLoginError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,49 +21,90 @@ const CMSPage = () => {
   });
 
   useEffect(() => {
-    fetchProjects();
+    checkSession();
+  }, []);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchProjects();
+    }
   }, [isLoggedIn]);
+
+  const checkSession = async () => {
+    try {
+      const session = await account.getSession("current");
+      if (session) {
+        setIsLoggedIn(true);
+      }
+    } catch (error) {
+      console.log("No active session");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const fetchProjects = async () => {
     if (!isLoggedIn) return;
+
     try {
       const response = await databases.listDocuments(database, projects_cid, [
         Query.orderDesc("$createdAt"),
       ]);
       setProjects(response.documents);
     } catch (error) {
+      if (error.code === 401) {
+        setIsLoggedIn(false);
+        await handleLogout();
+      }
       console.error("Error fetching projects:", error);
     }
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoginError("");
+
     try {
       await account.createEmailSession(email, password);
-      setIsLoggedIn(true);
-      setLoginError("");
+      const session = await account.getSession("current");
+      if (session) {
+        setIsLoggedIn(true);
+        setEmail("");
+        setPassword("");
+      }
     } catch (error) {
-      setLoginError("Invalid credentials");
+      setLoginError(error.message || "Invalid credentials");
     }
   };
 
   const handleLogout = async () => {
     try {
       await account.deleteSession("current");
-      setIsLoggedIn(false);
     } catch (error) {
       console.error("Error logging out:", error);
+    } finally {
+      setIsLoggedIn(false);
+      setProjects([]);
     }
   };
 
   const handleAddProject = async (e) => {
     e.preventDefault();
+
+    if (!isLoggedIn) {
+      setLoginError("Please log in to add projects");
+      return;
+    }
+
     try {
+      await account.getSession("current");
+
       const projectData = {
         ...newProject,
         project_skills: newProject.project_skills
           .split(",")
-          .map((skill) => skill.trim()),
+          .map((skill) => skill.trim())
+          .filter(Boolean),
       };
 
       await databases.createDocument(
@@ -80,26 +122,50 @@ const CMSPage = () => {
         project_skills: "",
       });
 
-      fetchProjects();
+      await fetchProjects();
     } catch (error) {
-      console.error("Error adding project:", error);
+      if (error.code === 401) {
+        setIsLoggedIn(false);
+        setLoginError("Session expired. Please log in again.");
+      } else {
+        console.error("Error adding project:", error);
+        setLoginError("Failed to add project. Please try again.");
+      }
     }
   };
 
   const handleDeleteProject = async (projectId) => {
+    if (!isLoggedIn) return;
+
     try {
+      await account.getSession("current");
       await databases.deleteDocument(database, projects_cid, projectId);
-      fetchProjects();
+      await fetchProjects();
     } catch (error) {
-      console.error("Error deleting project:", error);
+      if (error.code === 401) {
+        setIsLoggedIn(false);
+        setLoginError("Session expired. Please log in again.");
+      } else {
+        console.error("Error deleting project:", error);
+      }
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
 
   if (!isLoggedIn) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold mb-6 text-center">CMS Login</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
+            CMS Login
+          </h2>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <input
@@ -107,7 +173,7 @@ const CMSPage = () => {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
               />
             </div>
             <div>
@@ -116,7 +182,7 @@ const CMSPage = () => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
               />
             </div>
             {loginError && (
@@ -139,17 +205,19 @@ const CMSPage = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Projects CMS</h1>
+        <h1 className="text-2xl font-bold text-gray-800">Projects CMS</h1>
         <button
           onClick={handleLogout}
-          className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors"
+          className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
         >
           Logout
         </button>
       </div>
 
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-xl font-bold mb-4">Add New Project</h2>
+        <h2 className="text-xl font-bold mb-4 text-gray-800">
+          Add New Project
+        </h2>
         <form onSubmit={handleAddProject} className="space-y-4">
           <input
             placeholder="Project Title"
@@ -157,7 +225,7 @@ const CMSPage = () => {
             onChange={(e) =>
               setNewProject({ ...newProject, project_title: e.target.value })
             }
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
           />
           <textarea
             placeholder="Project Description"
@@ -168,7 +236,7 @@ const CMSPage = () => {
                 project_meta_description: e.target.value,
               })
             }
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
             rows={3}
           />
           <input
@@ -177,7 +245,7 @@ const CMSPage = () => {
             onChange={(e) =>
               setNewProject({ ...newProject, project_link: e.target.value })
             }
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
           />
           <input
             placeholder="Image URL"
@@ -185,7 +253,7 @@ const CMSPage = () => {
             onChange={(e) =>
               setNewProject({ ...newProject, img_url: e.target.value })
             }
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
           />
           <input
             placeholder="Skills (comma-separated)"
@@ -193,7 +261,7 @@ const CMSPage = () => {
             onChange={(e) =>
               setNewProject({ ...newProject, project_skills: e.target.value })
             }
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 bg-white"
           />
           <button
             type="submit"
@@ -234,7 +302,7 @@ const CMSPage = () => {
                     />
                   )}
                   <div>
-                    <h2 className="text-xl font-semibold">
+                    <h2 className="text-xl font-semibold text-gray-800">
                       {project.project_title}
                     </h2>
                     <p className="text-gray-600 mt-2">
