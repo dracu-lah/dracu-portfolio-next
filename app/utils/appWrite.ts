@@ -1,6 +1,6 @@
 // AppWrite Configuration
-import { Client, ID, Storage, Databases, Account } from "appwrite";
-const project_id = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID;
+import { Client, Storage, Databases, Account } from "appwrite";
+const project_id = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!;
 const client = new Client();
 client.setEndpoint("https://cloud.appwrite.io/v1").setProject(project_id);
 
