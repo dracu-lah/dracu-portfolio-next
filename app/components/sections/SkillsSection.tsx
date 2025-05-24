@@ -1,6 +1,6 @@
 import { skills_photos_bid, storage } from "@/utils/appWrite";
-import Link from "next/link";
 import Skills from "../Skills";
+import LinkedInLink from "./LinkedInLink";
 
 async function getData() {
   const response = await storage.listFiles(skills_photos_bid);
@@ -42,14 +42,7 @@ const SkillsSection = async () => {
           layouts.
         </p>
         <h3 className="text-[18px] font-extralight">
-          Visit my{" "}
-          <Link
-            className="text-blue-400 font-semibold"
-            href="https://www.linkedin.com/in/nevil-krishna-k-77170222a/"
-          >
-            Linkedin
-          </Link>{" "}
-          for more details.
+          Visit my {<LinkedInLink />} for more details.
         </h3>
       </div>
       <Skills skills={skillData} />
