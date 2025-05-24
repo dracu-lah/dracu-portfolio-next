@@ -16,7 +16,7 @@ const AboutSection = async () => {
         <h1 className="text-4xl lg:text-6xl font-bold">Hi, I'mNevil </h1>
         <h1 className="text-4xl lg:text-6xl font-bold pt-4">WebDeveloper</h1>
         <h3 className="font-bold pt-10 md:max-w-xs lg:max-w-max">
-          Front End Developer / JavaScript Fan / Learner
+          Front End Developer / Learner
         </h3>
       </div>
       <p className="max-w-sm lg:max-w-lg mt-4 font-extralight lg:text-xl md:mt-0 md:text-lg p-2 my-10 leading-relaxed">

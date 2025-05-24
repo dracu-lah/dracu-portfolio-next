@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 
 const Skills = ({ skills }) => {
+  console.log("skills", skills);
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope, { once: true });
   useEffect(() => {
@@ -12,7 +13,7 @@ const Skills = ({ skills }) => {
         await animate(
           scope.current,
           { opacity: [0, 1], y: [100, 0] },
-          { duration: 1 }
+          { duration: 1 },
         );
       };
       enterAnimation();

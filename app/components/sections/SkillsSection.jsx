@@ -1,17 +1,22 @@
 import { skills_photos_bid, storage } from "@/utils/appWrite";
 import Link from "next/link";
 import Skills from "../Skills";
+
 async function getData() {
   const response = await storage.listFiles(skills_photos_bid);
   const results = [];
 
   for (const item of response.files) {
-    const result = storage.getFilePreview(skills_photos_bid, item.$id);
-    results.push(result);
+    // Option 1: Use getFileView for direct file access (no transformations)
+    const fileUrl = storage.getFileView(skills_photos_bid, item.$id);
+
+    // Include both URL and file metadata for the Skills component
+    results.push(fileUrl);
   }
 
   return results;
 }
+
 const SkillsSection = async () => {
   const skillData = await getData();
 
