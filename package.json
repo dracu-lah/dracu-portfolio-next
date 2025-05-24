@@ -9,11 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@heroicons/react": "^2.2.0",
     "@tailwindcss/postcss": "^4.1.7",
+    "@vercel/analytics": "^1.5.0",
+    "appwrite": "^18.1.1",
+    "framer-motion": "^12.12.2",
     "next": "15.1.8",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.56.4",
+    "react-typewriter-effect": "^1.1.0",
     "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
