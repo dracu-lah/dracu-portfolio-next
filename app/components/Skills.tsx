@@ -3,7 +3,7 @@ import { useAnimate, useInView } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
 
-const Skills = ({ skills }) => {
+const Skills = ({ skills }: { skills: string[] }) => {
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope, { once: true });
   useEffect(() => {
@@ -17,10 +17,10 @@ const Skills = ({ skills }) => {
       };
       enterAnimation();
     }
-  }, [isInView]);
+  }, [isInView, animate, scope]);
   return (
     <ul ref={scope} className="grid grid-cols-3 md:grid-cols-4 gap-8">
-      {skills.map((skill, key) => (
+      {skills.map((skill: string, key: number) => (
         <li key={key}>
           <Image
             draggable="false"
@@ -28,7 +28,7 @@ const Skills = ({ skills }) => {
             width={80}
             height={80}
             src={skill}
-            alt={key}
+            alt={`key-${key}`}
           />
         </li>
       ))}

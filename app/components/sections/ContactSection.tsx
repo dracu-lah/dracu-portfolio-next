@@ -10,7 +10,7 @@ const ContactSection = () => {
     >
       <div className="text-center">
         <h1 className="text-5xl py-10 lg:text-6xl font-bold">CONTACT ME</h1>
-        <p>I have got just what you need. Let's talk</p>
+        <p>I have got just what you need. Let&apos;s talk</p>
         <div className="flex flex-col justify-center items-center pt-4">
           <div className="flex flex-col gap-y-2 justify-center items-center">
             <p className="flex gap-x-2">

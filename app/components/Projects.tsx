@@ -39,7 +39,7 @@ const Projects = async () => {
             </p>
           </div>
           <div className="max-w-[90vh] px-4 overflow-hidden">
-            {itm.project_skills.map((skill, key) => (
+            {itm.project_skills.map((skill: string, key: number) => (
               <span
                 key={key}
                 className="text-sky-950 font-bold bg-slate-100  rounded-full px-2 py-1.5 text-xs m-1 inline-block"
