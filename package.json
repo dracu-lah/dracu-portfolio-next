@@ -21,7 +21,8 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.4",
     "react-typewriter-effect": "^1.1.0",
-    "tailwindcss": "^4.1.7"
+    "tailwindcss": "^4.1.7",
+    "typewriter-effect": "^2.22.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

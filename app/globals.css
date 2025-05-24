@@ -1,1 +1,68 @@
 @import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding: 10rem;
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* custom tailwind css */
+@layer utilities {
+  .heroButton {
+    @apply border-4 text-white/60  border-white/40 animate-bounce hover:animate-none font-bold py-2 px-4  text-lg md:text-sm rounded-full hover:border-none hover:bg-white/80 hover:text-black duration-300 backdrop-filter backdrop-blur-lg;
+  }
+  .rightButton {
+    @apply fixed right-0 m-5 border-2 border-slate-300 duration-300 hover:bg-slate-100 hover:text-black   cursor-pointer p-2;
+  }
+}
+
+/* custom-scrollbar.css */
+/* For Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 5px;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+html::-moz-scrollbar {
+  width: 10px;
+}
+
+html::-moz-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+html::-moz-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
