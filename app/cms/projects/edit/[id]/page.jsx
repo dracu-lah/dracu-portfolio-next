@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 
 const EditProject = () => {
   const { id } = useParams();
-  console.log("id", id);
   const { getProject, updateProject } = useProjects();
   const {
     register,
