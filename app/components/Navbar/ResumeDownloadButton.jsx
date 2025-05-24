@@ -1,4 +1,4 @@
-import { resume_bid, storage } from "@/app/utils/appWrite";
+import { resume_bid, storage } from "@/utils/appWrite";
 import Link from "next/link";
 
 async function getData() {

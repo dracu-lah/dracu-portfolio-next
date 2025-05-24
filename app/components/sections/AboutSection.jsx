@@ -1,4 +1,4 @@
-import { database, databases, about_section_cid } from "@/app/utils/appWrite";
+import { database, databases, about_section_cid } from "@/utils/appWrite";
 
 async function getData() {
   const response = await databases.listDocuments(database, about_section_cid);

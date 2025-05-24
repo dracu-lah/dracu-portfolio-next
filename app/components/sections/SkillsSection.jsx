@@ -1,4 +1,4 @@
-import { skills_photos_bid, storage } from "@/app/utils/appWrite";
+import { skills_photos_bid, storage } from "@/utils/appWrite";
 import Link from "next/link";
 import Skills from "../Skills";
 async function getData() {
