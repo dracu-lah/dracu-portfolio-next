@@ -1,52 +1,42 @@
 import {
-  resume_bid,
-  storage,
-  hero_image_bid,
-  projects_cid,
-  about_section_cid,
-  database,
   databases,
-  skills_photos_bid,
-  socials_cid,
+  storage,
   Query,
+  bucket,
+  collection,
+  databaseId,
 } from "@/services/appwrite";
 
 export async function GetGithubURLAPI() {
-  const response = await databases.listDocuments(database, socials_cid);
-
-  return response.documents[0].github_url;
+  const res = await databases.listDocuments(databaseId, collection.socials);
+  return res.documents[0]?.github_url ?? null;
 }
+
 export async function GetResumeAPI() {
-  const response = await storage.listFiles(resume_bid);
-  return storage.getFileView(resume_bid, response.files[0].$id);
+  const res = await storage.listFiles(bucket.resume);
+  const file = res.files[0];
+  return file ? storage.getFileView(bucket.resume, file.$id) : null;
 }
 
 export async function GetHeroImageAPI() {
-  const response = await storage.listFiles(hero_image_bid);
-  return storage.getFileView(hero_image_bid, response.files[0].$id);
+  const res = await storage.listFiles(bucket.heroImage);
+  const file = res.files[0];
+  return file ? storage.getFileView(bucket.heroImage, file.$id) : null;
 }
 
 export async function GetAboutDescriptionAPI() {
-  const response = await databases.listDocuments(database, about_section_cid);
-  return response.documents[0].about_description;
+  const res = await databases.listDocuments(databaseId, collection.about);
+  return res.documents[0]?.about_description ?? null;
 }
 
 export async function GetSkillsAPI() {
-  const response = await storage.listFiles(skills_photos_bid);
-  const results = [];
-
-  for (const item of response.files) {
-    const fileUrl = storage.getFileView(skills_photos_bid, item.$id);
-    results.push(fileUrl);
-  }
-
-  return results;
+  const res = await storage.listFiles(bucket.skills);
+  return res.files.map((file) => storage.getFileView(bucket.skills, file.$id));
 }
 
 export async function GetProjectsAPI() {
-  const response = await databases.listDocuments(database, projects_cid, [
+  const res = await databases.listDocuments(databaseId, collection.projects, [
     Query.orderDesc("$createdAt"),
   ]);
-
-  return response.documents;
+  return res.documents;
 }
