@@ -1,7 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-const Navbar = ({ children }) => {
+import { PropsWithChildren } from "react";
+const Navbar = ({ children }: PropsWithChildren) => {
   return (
     <motion.nav
       initial={{ y: -100 }}
