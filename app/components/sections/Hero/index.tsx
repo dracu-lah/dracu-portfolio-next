@@ -34,7 +34,7 @@ const HeroSection = () => {
         <div className=" pt-5 flex justify-center items-center gap-x-2 ">
           {heroLinks.map((link) => (
             <a href={link.href} key={link.href}>
-              <Button className="animate-bounce h-4 rounded-full duration-300 hover:animate-out">
+              <Button className="animate-bounce md:h-4 rounded-full duration-300 hover:animate-out">
                 {link.name}
               </Button>
             </a>
