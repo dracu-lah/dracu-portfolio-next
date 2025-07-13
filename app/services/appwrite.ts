@@ -1,0 +1,16 @@
+import { Client, Storage, Databases, Account, Query } from "appwrite";
+const baseUrl = "https://fra.cloud.appwrite.io/v1";
+const project_id = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!;
+const client = new Client();
+client.setEndpoint(baseUrl).setProject(project_id);
+export const account = new Account(client);
+export const databases = new Databases(client);
+export const storage = new Storage(client);
+export const database = "648b831eb80f41aa8b37";
+export const about_section_cid = "648bf10a5ed391156f0b";
+export const skills_photos_bid = "648b85d925a96d32d702";
+export const socials_cid = "648bf3fb6afc137df487";
+export const projects_cid = "648b83371bf4cf374971";
+export const resume_bid = "648b82ed147445b54f1e";
+export const hero_image_bid = "648bf6e406b47b7a7d94";
+export { Query };
