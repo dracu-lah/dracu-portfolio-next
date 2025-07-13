@@ -27,7 +27,7 @@ const RightButtons = () => {
         animate={{ x: show ? 0 : 200 }}
         className="hidden md:flex gap-2   flex-col  "
       >
-        {navItems.map((item, idx) => (
+        {navItems.map((item, _idx) => (
           <a key={item.label} href={item.href}>
             <Button className="text-xs w-full ">
               <span className=""> {item.label}</span>

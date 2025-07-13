@@ -31,7 +31,9 @@ export default function RootLayout({
       <body
         className={`text-primary bg-background ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar children={<ResumeDownloadButton />} />
+        <Navbar>
+          <ResumeDownloadButton />
+        </Navbar>
         {children}
         <GithubButton />
         <RightButtons />

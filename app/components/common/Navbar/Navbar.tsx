@@ -10,7 +10,7 @@ const Navbar = ({ children }: PropsWithChildren) => {
       animate={{ y: 0 }}
       className="flex justify-between items-center  p-4 fixed min-w-full z-50 "
     >
-      <a href="/" className="flex text-3xl  font-bold gap-x-2 items-center ">
+      <a href="#" className="flex text-3xl  font-bold gap-x-2 items-center ">
         <svg
           className="size-9 "
           viewBox="0 0 90 71"
