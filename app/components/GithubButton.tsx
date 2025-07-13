@@ -6,7 +6,7 @@ const GithubButton = async () => {
     <a
       target="_blank"
       href={githubURL}
-      className="fixed bottom-0 left-0 m-4 md:m-10 bg-slate-100/40 backdrop-filter backdrop-blur-lg duration-300 hover:bg-slate-100 rounded-lg p-2"
+      className="fixed bottom-0 left-0 m-4 md:m-10 bg-primary/40 backdrop-filter backdrop-blur-lg duration-300 hover:bg-slate-100 rounded-lg p-2"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -5,11 +5,11 @@ const Projects = async () => {
   const projects = await GetProjectsAPI();
 
   return (
-    <div className="flex space-x-4 snap-x snap-proximity overflow-x-scroll overflow-y-hidden max-w-xs md:max-w-[70vh] lg:max-w-[62rem] duration-300">
+    <div className="flex space-x-4 snap-x snap-proximity overflow-x-scroll rounded-lg overflow-y-hidden max-w-xs md:max-w-[70vh] lg:max-w-[62rem] duration-300">
       {projects.map((itm) => (
         <div
           key={itm.$id}
-          className=" min-h-[512px] min-w-[320px] snap-center md:snap-start rounded-sm  shadow-lg bg-secondary "
+          className=" min-h-[512px]  min-w-[320px] snap-center md:snap-start rounded-lg overflow-hidden  shadow-lg bg-secondary/40 "
         >
           <a target="_blank" href={itm.project_link}>
             <Image
@@ -34,7 +34,7 @@ const Projects = async () => {
             {itm.project_skills.map((skill: string, key: number) => (
               <span
                 key={key}
-                className=" font-bold bg-background  rounded-full px-2 py-1.5 text-xs m-1 inline-block"
+                className=" font-bold bg-secondary  rounded-full px-2 py-1.5 text-xs m-1 inline-block"
               >
                 #{skill}
               </span>

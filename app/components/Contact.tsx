@@ -71,7 +71,7 @@ const Contact: React.FC = () => {
       )}
 
       <input
-        className="p-2 rounded-lg outline-none border-2 focus:border-foreground duration-300 bg-transparent"
+        className="p-2 rounded-lg outline-none border-2 focus:border-secondary duration-300 bg-transparent"
         {...register("user_name", {
           required: "Name is required",
           minLength: {
@@ -94,7 +94,7 @@ const Contact: React.FC = () => {
             message: "Please enter a valid phone number",
           },
         })}
-        className="p-2 rounded-lg outline-none border-2 focus:border-foreground duration-300 bg-transparent"
+        className="p-2 rounded-lg outline-none border-2 focus:border-secondary duration-300 bg-transparent"
         placeholder="Enter Phone Number"
       />
       {errors.user_phno && (
@@ -110,7 +110,7 @@ const Contact: React.FC = () => {
             message: "Please enter a valid email address",
           },
         })}
-        className="p-2 rounded-lg outline-none border-2 focus:border-foreground duration-300 bg-transparent"
+        className="p-2 rounded-lg outline-none border-2 focus:border-secondary duration-300 bg-transparent"
         placeholder="Enter Email"
       />
       {errors.user_email && (
@@ -121,7 +121,7 @@ const Contact: React.FC = () => {
 
       <textarea
         placeholder="Type your Query ..."
-        className="p-2 rounded-lg outline-none border-2 focus:border-foreground duration-300 bg-transparent"
+        className="p-2 rounded-lg outline-none border-2 focus:border-secondary duration-300 bg-transparent"
         cols={30}
         rows={10}
         {...register("user_message", {
@@ -141,7 +141,7 @@ const Contact: React.FC = () => {
       <input
         type="submit"
         value="Send Message"
-        className="border-2 p-2 text-white cursor-pointer  hover:border-foreground transition-colors duration-300"
+        className="border-2 outline-none focus:bg-secondary active:bg-secondary hover:bg-secondary  border-secondary p-2 rounded-lg text-primary cursor-pointer   transition-colors duration-300"
       />
     </form>
   );

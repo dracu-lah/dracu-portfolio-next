@@ -8,7 +8,7 @@ const ContactSection = () => {
       id="contact"
       className="flex flex-col lg:flex-row md:gap-x-10 lg:justify-around justify-center items-center min-h-screen"
     >
-      <div className="text-center">
+      <div className="text-center text-primary">
         <h1 className="text-5xl py-10 lg:text-6xl font-bold">CONTACT ME</h1>
         <p>I have got just what you need. Let&apos;s talk</p>
         <div className="flex flex-col justify-center items-center pt-4">

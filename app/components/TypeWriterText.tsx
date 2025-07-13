@@ -5,7 +5,7 @@ import Typewriter from "typewriter-effect";
 
 const TypeWriterText = () => {
   return (
-    <div className="text-3xl md:text-6xl  text-slate-100/60  font-semibold p-4">
+    <div className="text-3xl md:text-6xl  dark:opacity-60  font-semibold p-4">
       <Typewriter
         options={{
           strings: [
@@ -15,7 +15,7 @@ const TypeWriterText = () => {
           ],
           autoStart: true,
           loop: true,
-          cursorClassName: "text-yellow-300 animate-pulse",
+          cursorClassName: "text-primary animate-pulse",
         }}
       />
     </div>
