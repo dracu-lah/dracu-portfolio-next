@@ -26,7 +26,7 @@ const SkillsSection = async () => {
           layouts.
         </p>
         <h3 className="text-[18px] font-extralight">
-          Visit my
+          Visit my &nbsp;
           <a
             className="text-blue-400 font-semibold"
             href="https://www.linkedin.com/in/nevil-krishna-k-77170222a/"
@@ -34,7 +34,7 @@ const SkillsSection = async () => {
           >
             Linkedin
           </a>
-          for more details.
+          &nbsp; for more details.
         </h3>
       </div>
       <Skills skills={skills} />
