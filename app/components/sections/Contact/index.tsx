@@ -1,6 +1,6 @@
 import { EnvelopeIcon, LinkIcon } from "@heroicons/react/24/outline";
 import React from "react";
-import Contact from "./components/Contact";
+import Contact from "./components/ContactForm";
 
 const ContactSection = () => {
   return (
@@ -14,13 +14,18 @@ const ContactSection = () => {
         <div className="flex flex-col justify-center items-center pt-4">
           <div className="flex flex-col gap-y-2 justify-center items-center">
             <p className="flex gap-x-2">
-              <LinkIcon className="w-5" />
-              linkedin.com/in/nevil-krishna-k-77170222a
+              <EnvelopeIcon className="w-5" />
+              nevilkrishna@gmail.com
             </p>
 
             <p className="flex gap-x-2">
-              <EnvelopeIcon className="w-5" />
-              nevilkrishna@gmail.com
+              <LinkIcon className="w-5" />
+              <a
+                href="https://linkedin.com/in/nevil-krishna-k-77170222a"
+                target="_blank"
+              >
+                LinkedIn
+              </a>
             </p>
           </div>
         </div>
