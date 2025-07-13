@@ -4,9 +4,9 @@ import { Button } from "../ui/button";
 const Navbar = () => {
   return (
     <nav className="flex justify-between items-center  p-4 fixed min-w-full z-50 ">
-      <a href="/" className="flex text-3xl font-bold gap-x-2 items-center ">
+      <a href="/" className="flex text-3xl  font-bold gap-x-2 items-center ">
         <svg
-          className="size-9"
+          className="size-9 "
           viewBox="0 0 90 71"
           xmlns="http://www.w3.org/2000/svg"
         >

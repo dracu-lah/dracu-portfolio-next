@@ -1,6 +1,17 @@
+"use client";
+import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { Button } from "./ui/button";
-
+import { useState } from "react";
 const RightButtons = () => {
+  const [show, setShow] = useState(false);
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (progress) => {
+    if (progress > 0) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  });
   const navItems = [
     { id: "", href: "#", label: "/" },
     { id: "about", href: "#about", label: "About" },
@@ -10,8 +21,12 @@ const RightButtons = () => {
   ];
 
   return (
-    <div className=" fixed top-[50vh]  right-10 z-50">
-      <div className="hidden md:flex gap-2   flex-col  ">
+    <div className=" fixed top-[40vh]  right-10 z-50">
+      <motion.div
+        initial={{ x: 200 }}
+        animate={{ x: show ? 0 : 200 }}
+        className="hidden md:flex gap-2   flex-col  "
+      >
         {navItems.map((item, idx) => (
           <a key={item.label} href={item.href}>
             <Button className="text-xs w-full ">
@@ -19,7 +34,7 @@ const RightButtons = () => {
             </Button>
           </a>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

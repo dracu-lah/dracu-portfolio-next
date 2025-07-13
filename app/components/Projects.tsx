@@ -9,7 +9,7 @@ const Projects = async () => {
       {projects.map((itm) => (
         <div
           key={itm.$id}
-          className=" min-h-[512px]  min-w-[320px] snap-center md:snap-start rounded-lg overflow-hidden  shadow-lg bg-secondary/40 "
+          className=" min-h-[512px]  min-w-[320px] snap-center md:snap-start rounded-lg overflow-hidden  shadow-lg bg-secondary/10 "
         >
           <a target="_blank" href={itm.project_link}>
             <Image
