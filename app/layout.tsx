@@ -4,6 +4,7 @@ import Navbar from "./components/common/Navbar/Navbar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ResumeDownloadButton from "./components/common/Navbar/ResumeDownloadButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,7 @@ export default function RootLayout({
       <body
         className={`text-primary bg-background ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
+        <Navbar children={<ResumeDownloadButton />} />
         {children}
         <GithubButton />
         <RightButtons />

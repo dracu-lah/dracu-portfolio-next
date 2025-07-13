@@ -1,9 +1,14 @@
-import React from "react";
-import ResumeDownloadButton from "./ResumeDownloadButton";
+"use client";
 import { Button } from "@/components/ui/button";
-const Navbar = () => {
+import { motion } from "framer-motion";
+const Navbar = ({ children }) => {
   return (
-    <nav className="flex justify-between items-center  p-4 fixed min-w-full z-50 ">
+    <motion.nav
+      initial={{ y: -100 }}
+      transition={{ duration: 0.5 }}
+      animate={{ y: 0 }}
+      className="flex justify-between items-center  p-4 fixed min-w-full z-50 "
+    >
       <a href="/" className="flex text-3xl  font-bold gap-x-2 items-center ">
         <svg
           className="size-9 "
@@ -35,9 +40,9 @@ const Navbar = () => {
         <a href={"#contact"}>
           <Button className="h-full">contact</Button>
         </a>
-        <ResumeDownloadButton />
+        {children}
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
