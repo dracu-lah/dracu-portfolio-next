@@ -1,6 +1,6 @@
 import React from "react";
 import ResumeDownloadButton from "./ResumeDownloadButton";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 const Navbar = () => {
   return (
     <nav className="flex justify-between items-center  p-4 fixed min-w-full z-50 ">

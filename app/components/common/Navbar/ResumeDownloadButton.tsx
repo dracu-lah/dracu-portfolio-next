@@ -1,5 +1,5 @@
 import { GetResumeAPI } from "@/services/api";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 const ResumeDownloadButton = async () => {
   const resumeLink = await GetResumeAPI();

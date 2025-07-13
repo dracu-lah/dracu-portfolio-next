@@ -1,6 +1,6 @@
-import RightButtons from "./components/RightButtons";
-import GithubButton from "./components/GithubButton";
-import Navbar from "./components/Navbar/Navbar";
+import RightButtons from "./components/common/RightButtons";
+import GithubButton from "./components/common/GithubButton";
+import Navbar from "./components/common/Navbar/Navbar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";

@@ -1,6 +1,6 @@
 "use client";
 import { useMotionValueEvent, useScroll, motion } from "framer-motion";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 const RightButtons = () => {
   const [show, setShow] = useState(false);

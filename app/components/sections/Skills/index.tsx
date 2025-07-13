@@ -1,5 +1,4 @@
-import Skills from "../Skills";
-import LinkedInLink from "./LinkedInLink";
+import Skills from "./components/Skills";
 import { GetSkillsAPI } from "@/services/api";
 
 const SkillsSection = async () => {
@@ -27,7 +26,15 @@ const SkillsSection = async () => {
           layouts.
         </p>
         <h3 className="text-[18px] font-extralight">
-          Visit my {<LinkedInLink />} for more details.
+          Visit my
+          <a
+            className="text-blue-400 font-semibold"
+            href="https://www.linkedin.com/in/nevil-krishna-k-77170222a/"
+            target="_blank"
+          >
+            Linkedin
+          </a>
+          for more details.
         </h3>
       </div>
       <Skills skills={skills} />

@@ -1,7 +1,7 @@
-import HeroImage from "../HeroImage";
-import HeroCircles from "../HeroCircles";
-import TypeWriterText from "../TypeWriterText";
-import { Button } from "../ui/button";
+import HeroImage from "./components/HeroImage";
+import HeroCircles from "./components/HeroCircles";
+import TypeWriterText from "./components/TypeWriterText";
+import { Button } from "@/components/ui/button";
 const HeroSection = () => {
   const heroLinks = [
     {

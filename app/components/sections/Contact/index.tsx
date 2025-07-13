@@ -1,6 +1,6 @@
-import { EnvelopeIcon, LinkIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import { EnvelopeIcon, LinkIcon } from "@heroicons/react/24/outline";
 import React from "react";
-import Contact from "../Contact";
+import Contact from "./components/Contact";
 
 const ContactSection = () => {
   return (
