@@ -1,4 +1,4 @@
-import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import { EnvelopeIcon, LinkIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import Contact from "../Contact";
 
@@ -14,9 +14,10 @@ const ContactSection = () => {
         <div className="flex flex-col justify-center items-center pt-4">
           <div className="flex flex-col gap-y-2 justify-center items-center">
             <p className="flex gap-x-2">
-              <PhoneIcon className="w-5" />
-              <span>+91 9207932070</span>
+              <LinkIcon className="w-5" />
+              linkedin.com/in/nevil-krishna-k-77170222a
             </p>
+
             <p className="flex gap-x-2">
               <EnvelopeIcon className="w-5" />
               nevilkrishna@gmail.com
