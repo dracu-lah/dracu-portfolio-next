@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Nevil | DVLPR",
-  description: "Portfolio website of a frontend developer",
+  description: `Nevil Krishna K is a frontend engineer specializing in high-performance user interfaces with React.js. With a passion for clean UI and open-source contributions, he brings expertise in performance optimization and responsive design.`,
 };
 
 export default function RootLayout({
