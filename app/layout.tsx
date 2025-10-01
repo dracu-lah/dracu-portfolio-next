@@ -17,8 +17,40 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nevil | DVLPR",
-  description: `Nevil Krishna K is a frontend engineer specializing in high-performance user interfaces with React.js. With a passion for clean UI and open-source contributions, he brings expertise in performance optimization and responsive design.`,
+  title: "Nevil Krishna K | Frontend Engineer & React Developer",
+  description:
+    "Portfolio of Nevil Krishna K, a frontend engineer specializing in React.js, high-performance UIs, and open-source projects.",
+  keywords: [
+    "Nevil Krishna K",
+    "React Developer",
+    "Frontend Engineer",
+    "Next.js",
+    "Portfolio",
+  ],
+  openGraph: {
+    title: "Nevil Krishna K | React Developer",
+    description:
+      "Frontend engineer portfolio specializing in React.js and performance optimization.",
+    url: "https://dracufolio.vercel.app",
+    siteName: "Nevil Krishna Portfolio",
+    images: [
+      {
+        url: "https://dracufolio.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Nevil Krishna Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nevil Krishna K | React Developer",
+    description:
+      "Frontend engineer portfolio specializing in React.js and performance optimization.",
+    images: ["https://dracufolio.vercel.app/og-image.png"],
+  },
 };
 
 export default function RootLayout({
