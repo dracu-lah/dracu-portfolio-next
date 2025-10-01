@@ -31,11 +31,11 @@ export const metadata: Metadata = {
     title: "Nevil Krishna K | React Developer",
     description:
       "Frontend engineer portfolio specializing in React.js and performance optimization.",
-    url: "https://dracufolio.vercel.app",
+    url: "https://www.nevil.dev",
     siteName: "Nevil Krishna Portfolio",
     images: [
       {
-        url: "https://dracufolio.vercel.app/og-image.png",
+        url: "https://www.nevil.dev/og-image.png",
         width: 1200,
         height: 630,
         alt: "Nevil Krishna Portfolio",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Nevil Krishna K | React Developer",
     description:
       "Frontend engineer portfolio specializing in React.js and performance optimization.",
-    images: ["https://dracufolio.vercel.app/og-image.png"],
+    images: ["https://www.nevil.dev/og-image.png"],
   },
 };
 

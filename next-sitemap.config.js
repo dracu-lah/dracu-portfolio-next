@@ -1,6 +1,6 @@
 
 module.exports = {
-  siteUrl: "https://dracufolio.vercel.app",
+  siteUrl: "https://www.nevil.dev",
   generateRobotsTxt: true,
   sitemapSize: 7000,
 };
