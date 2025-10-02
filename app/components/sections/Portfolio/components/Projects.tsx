@@ -3,13 +3,12 @@ import Image from "next/image";
 
 const Projects = async () => {
   const projects = await GetProjectsAPI();
-
   return (
-    <div className="flex space-x-4 snap-x snap-proximity overflow-x-scroll rounded-lg overflow-y-hidden max-w-xs md:max-w-[70vh] lg:max-w-[62rem] duration-300">
+    <div className="flex space-x-4 snap-x snap-proximity overflow-x-scroll rounded-lg overflow-y-hidden max-w-xs md:max-w-[70vh] lg:max-w-[62rem] duration-300 scrollbar-visible">
       {projects.map((itm) => (
         <div
           key={itm.$id}
-          className=" min-h-[512px]  min-w-[320px] snap-center md:snap-start rounded-lg overflow-hidden  shadow-lg bg-secondary/10 "
+          className="min-h-[512px] min-w-[320px] snap-center md:snap-start rounded-lg overflow-hidden shadow-lg bg-secondary/10"
         >
           <a target="_blank" href={itm.project_link}>
             <Image
@@ -17,15 +16,14 @@ const Projects = async () => {
               height={480}
               width={640}
               src={itm.img_url}
-              className="cursor-pointer h-40 hover:opacity-40 duration-300 "
+              className="cursor-pointer h-40 hover:opacity-40 duration-300"
               alt={itm.project_title}
             />
           </a>
-          <div className="px-6 py-4 ">
-            <div className="font-bold text-xl  text-left">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl text-left">
               {itm.project_title}
             </div>
-
             <p className="opacity-60 text-justify">
               {itm.project_meta_description}
             </p>
@@ -34,7 +32,7 @@ const Projects = async () => {
             {itm.project_skills.map((skill: string, key: number) => (
               <span
                 key={key}
-                className=" font-bold bg-secondary  rounded-full px-2 py-1.5 text-xs m-1 inline-block"
+                className="font-bold bg-secondary rounded-full px-2 py-1.5 text-xs m-1 inline-block"
               >
                 #{skill}
               </span>
