@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Nevil Krishna K | Frontend Engineer & React Developer",
+  icons: {
+    icon: "/favicon.ico",
+  },
   description:
     "Portfolio of Nevil Krishna K, a frontend engineer specializing in React.js, high-performance UIs, and open-source projects.",
   keywords: [

@@ -19,14 +19,14 @@ const Skills = ({ skills }: { skills: string[] }) => {
     }
   }, [isInView, animate, scope]);
   return (
-    <ul ref={scope} className="grid grid-cols-3 md:grid-cols-4 gap-8">
+    <ul ref={scope} className="grid grid-cols-2 md:grid-cols-4 gap-8">
       {skills.map((skill: string, key: number) => (
-        <li key={key}>
+        <li key={key} className="size-20 md:size-30">
           <Image
             draggable="false"
-            className="w-auto h-auto"
-            width={80}
-            height={80}
+            className="size-full"
+            width={100}
+            height={100}
             src={skill}
             alt={`key-${key}`}
           />
