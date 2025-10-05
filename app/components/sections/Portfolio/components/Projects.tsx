@@ -22,7 +22,7 @@ const Projects = ({ projects }: Projects) => {
     <div className="relative">
       <Button
         onClick={() => scroll("left")}
-        className="hidden md:absolute -left-15 top-1/2 -translate-y-1/2 z-10 "
+        className="hidden lg:flex absolute -left-15 top-1/2 -translate-y-1/2 z-10 "
         aria-label="Scroll left"
       >
         <ChevronLeft size={24} />
@@ -76,7 +76,7 @@ const Projects = ({ projects }: Projects) => {
 
       <Button
         onClick={() => scroll("right")}
-        className="hidden md:absolute -right-15 top-1/2 -translate-y-1/2 z-10  p-2 "
+        className="hidden lg:flex absolute -right-15 top-1/2 -translate-y-1/2 z-10  p-2 "
         aria-label="Scroll right"
       >
         <ChevronRight size={24} />

@@ -25,7 +25,7 @@ const RightButtons = () => {
       <motion.div
         initial={{ x: 200 }}
         animate={{ x: show ? 0 : 200 }}
-        className="hidden md:flex gap-2   flex-col  "
+        className="hidden lg:flex gap-2   flex-col"
       >
         {navItems.map((item) => (
           <a key={item.label} href={item.href}>
