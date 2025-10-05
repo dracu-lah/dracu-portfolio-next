@@ -1,7 +1,9 @@
 import React from "react";
 import Projects from "./components/Projects";
+import { GetProjectsAPI } from "@/services/api";
 
-const PortfolioSection = () => {
+const PortfolioSection = async () => {
+  const projects = await GetProjectsAPI();
   return (
     <>
       <section
@@ -12,7 +14,7 @@ const PortfolioSection = () => {
           Portfolio & Previous Projects
         </h1>
 
-        <Projects />
+        <Projects projects={projects} />
       </section>
     </>
   );

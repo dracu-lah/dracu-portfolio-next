@@ -1,8 +1,6 @@
-import { GetProjectsAPI } from "@/services/api";
 import Image from "next/image";
 
-const Projects = async () => {
-  const projects = await GetProjectsAPI();
+const Projects = async ({ projects }) => {
   return (
     <div className="flex space-x-4 snap-x snap-proximity overflow-x-scroll rounded-lg overflow-y-hidden max-w-xs md:max-w-[70vh] lg:max-w-[62rem] duration-300 scrollbar-visible">
       {projects.map((itm) => (
