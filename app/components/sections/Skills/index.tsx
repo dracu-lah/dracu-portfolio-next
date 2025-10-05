@@ -13,7 +13,7 @@ const SkillsSection = async () => {
         <h3 className="font-mono text-center">
           A PROBLEM IS A CHANCE FOR YOU TO DO YOUR BEST.
         </h3>
-        <h1 className="text-4xl md:text-6xl font-semibold">
+        <h1 className="text-4xl md:text-6xl text-center font-semibold">
           Skills & Experience
         </h1>
         <p className="text-lg font-thin text-center">
@@ -25,7 +25,7 @@ const SkillsSection = async () => {
           React, custom plugins, features, animations, and coding interactive
           layouts.
         </p>
-        <h3 className="text-[18px] font-extralight">
+        <h3 className="text-[18px] text-center font-extralight">
           Visit my &nbsp;
           <a
             className="text-blue-400 font-semibold"
