@@ -21,9 +21,8 @@ const SkillsSection = async () => {
           the web).
         </p>
         <p className="max-w-2xl text-center text-lg md:text-xl">
-          HTML, CSS, JS, building small and medium web applications with Vue or
-          React, custom plugins, features, animations, and coding interactive
-          layouts.
+          My focus is on creating high-quality, accessible user interfaces from
+          concept to reality - using React.
         </p>
         <h3 className="text-[18px] text-center font-extralight">
           Visit my &nbsp;
