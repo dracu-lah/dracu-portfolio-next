@@ -11,7 +11,7 @@ const TypeWriterText = () => {
           strings: [
             "Hi I am Nevil",
             "Guy-who-loves-Sambar.tsx",
-            "< ButLovesToCodeMore />",
+            "<\u200BButLovesToCodeMore />",
           ],
           autoStart: true,
           loop: true,
