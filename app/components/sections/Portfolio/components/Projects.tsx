@@ -23,7 +23,7 @@ const ProjectCard = ({
   const [isImageHovered, setIsImageHovered] = useState(false);
 
   return (
-    <div className="min-h-[512px] min-w-[320px] snap-center md:snap-start rounded-lg overflow-hidden shadow-lg bg-secondary/10 flex flex-col">
+    <div className="bg-card  flex flex-col ">
       <div
         className="relative"
         onMouseEnter={() => setIsImageHovered(true)}
@@ -34,7 +34,7 @@ const ProjectCard = ({
           height={480}
           width={640}
           src={project.img_url}
-          className="cursor-pointer h-40 w-full hover:opacity-80 duration-300 object-cover"
+          className="cursor-pointer w-full h-[320px]  hover:opacity-80 duration-300 object-cover"
           alt={project.project_title}
           onClick={() => onImageClick(project.img_url)}
         />
@@ -52,7 +52,6 @@ const ProjectCard = ({
         {/* Links container */}
         <ProjectLinks project={project} />
       </div>
-
       <ProjectContent project={project} />
     </div>
   );
@@ -97,7 +96,7 @@ const ProjectLinks = ({ project }: { project: Projects[0] }) => {
 // Project Content Component
 const ProjectContent = ({ project }: { project: Projects[0] }) => {
   return (
-    <>
+    <div className="flex-1 flex flex-col">
       <div className="px-6 py-4 flex-1">
         <div className="font-bold text-xl text-left mb-2">
           {project.project_title}
@@ -116,7 +115,7 @@ const ProjectContent = ({ project }: { project: Projects[0] }) => {
           </span>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
@@ -200,13 +199,10 @@ const Projects = ({ projects }: Projects) => {
 
   return (
     <>
-      <div className="relative">
+      <div className="relative px-8">
         <ScrollButton direction="left" onClick={() => scroll("left")} />
 
-        <div
-          ref={scrollRef}
-          className="flex space-x-4 snap-x snap-proximity overflow-x-auto rounded-lg overflow-y-hidden max-w-xs md:max-w-[70vh] lg:max-w-[62rem] duration-300 scrollbar-visible"
-        >
+        <div ref={scrollRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map((project: Projects[0]) => (
             <ProjectCard
               key={project.$id}
