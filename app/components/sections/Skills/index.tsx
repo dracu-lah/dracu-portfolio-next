@@ -2,7 +2,14 @@ import Skills from "./components/Skills";
 import { GetSkillsAPI } from "@/services/api";
 
 const SkillsSection = async () => {
-  const skills = await GetSkillsAPI();
+  let skills: string[] = [];
+
+  try {
+    skills = await GetSkillsAPI();
+  } catch (error) {
+    console.error("Failed to load skills:", error);
+    // skills will remain empty array if API fails
+  }
 
   return (
     <section

@@ -3,7 +3,14 @@ import Projects from "./components/Projects";
 import { GetProjectsAPI } from "@/services/api";
 
 const PortfolioSection = async () => {
-  const projects = await GetProjectsAPI();
+  let projects: Projects = [];
+
+  try {
+    projects = await GetProjectsAPI();
+  } catch (error) {
+    console.error("Failed to load projects:", error);
+  }
+
   return (
     <>
       <section

@@ -1,7 +1,14 @@
 import { GetAboutDescriptionAPI } from "@/services/api";
 
 const AboutSection = async () => {
-  const description = await GetAboutDescriptionAPI();
+  let description = "";
+
+  try {
+    description = await GetAboutDescriptionAPI();
+  } catch (error) {
+    console.error("Failed to load about description:", error);
+  }
+
   return (
     <section
       id="about"

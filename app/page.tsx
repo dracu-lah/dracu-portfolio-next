@@ -8,15 +8,15 @@ export const revalidate = 86400;
 export default function Home() {
   return (
     <>
-      {/* <HeroSection /> */}
-      {/* <hr className="my-2 max-w-xs mx-auto"></hr> */}
-      {/* <AboutSection /> */}
-      {/* <hr className="max-w-xs mx-auto"></hr> */}
-      {/* <SkillsSection /> */}
-      {/* <hr className="max-w-xs mx-auto"></hr> */}
+      <HeroSection />
+      <hr className="my-2 max-w-xs mx-auto"></hr>
+      <AboutSection />
+      <hr className="max-w-xs mx-auto"></hr>
+      <SkillsSection />
+      <hr className="max-w-xs mx-auto"></hr>
       <PortfolioSection />
       <hr className="max-w-xs mx-auto"></hr>
-      {/* <ContactSection /> */}
+      <ContactSection />
     </>
   );
 }
