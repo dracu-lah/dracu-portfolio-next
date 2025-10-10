@@ -8,7 +8,7 @@ import {
   Github,
   Maximize2,
 } from "lucide-react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { type Projects } from "@/types/appwrite";
 
@@ -149,6 +149,23 @@ const ImageModal = ({
   imageUrl: string;
   onClose: () => void;
 }) => {
+  // Handle escape key press
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    // Add event listener when modal is mounted
+    document.addEventListener("keydown", handleEscape);
+
+    // Remove event listener when modal is unmounted
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [onClose]);
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300"
