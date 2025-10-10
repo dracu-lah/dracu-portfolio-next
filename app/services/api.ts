@@ -37,7 +37,7 @@ export async function GetSkillsAPI() {
 export async function GetProjectsAPI() {
   const res = await databases.listDocuments(databaseId, collection.projects, [
     Query.equal("isPublished", true),
-    Query.orderDesc("$createdAt"),
+    Query.orderAsc("sort_order"),
   ]);
   return res.documents;
 }
