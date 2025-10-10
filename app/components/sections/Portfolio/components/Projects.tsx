@@ -32,8 +32,7 @@ const ProjectCard = ({
         <div className="aspect-video">
           <Image
             draggable="false"
-            height={480}
-            width={640}
+            fill
             src={project.img_url}
             className="cursor-pointer w-full h-full  hover:opacity-80 duration-300 object-cover"
             alt={project.project_title}
