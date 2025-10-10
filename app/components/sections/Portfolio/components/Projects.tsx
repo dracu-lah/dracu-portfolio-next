@@ -23,7 +23,7 @@ const ProjectCard = ({
   const [isImageHovered, setIsImageHovered] = useState(false);
 
   return (
-    <div className="bg-card  flex flex-col ">
+    <div className="bg-card overflow-hidden  flex flex-col min-w-80 md:w-full ">
       <div
         className="relative"
         onMouseEnter={() => setIsImageHovered(true)}
@@ -34,7 +34,7 @@ const ProjectCard = ({
           height={480}
           width={640}
           src={project.img_url}
-          className="cursor-pointer w-full h-[320px]  hover:opacity-80 duration-300 object-cover"
+          className="cursor-pointer w-full h-40 md:h-[420px]  hover:opacity-80 duration-300 object-cover"
           alt={project.project_title}
           onClick={() => onImageClick(project.img_url)}
         />
@@ -199,10 +199,13 @@ const Projects = ({ projects }: Projects) => {
 
   return (
     <>
-      <div className="relative px-8">
+      <div className="relative ">
         <ScrollButton direction="left" onClick={() => scroll("left")} />
 
-        <div ref={scrollRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div
+          ref={scrollRef}
+          className="md:grid  md:grid-cols-2 gap-4 md:w-full max-w-[90vw]  overflow-scroll flex"
+        >
           {projects.map((project: Projects[0]) => (
             <ProjectCard
               key={project.$id}
