@@ -29,15 +29,17 @@ const ProjectCard = ({
         onMouseEnter={() => setIsImageHovered(true)}
         onMouseLeave={() => setIsImageHovered(false)}
       >
-        <Image
-          draggable="false"
-          height={480}
-          width={640}
-          src={project.img_url}
-          className="cursor-pointer w-full h-40 md:h-[420px]  hover:opacity-80 duration-300 object-cover"
-          alt={project.project_title}
-          onClick={() => onImageClick(project.img_url)}
-        />
+        <div className="aspect-video">
+          <Image
+            draggable="false"
+            height={480}
+            width={640}
+            src={project.img_url}
+            className="cursor-pointer w-full h-full  hover:opacity-80 duration-300 object-cover"
+            alt={project.project_title}
+            onClick={() => onImageClick(project.img_url)}
+          />
+        </div>
 
         {/* Maximize icon on hover */}
         <div
