@@ -103,7 +103,7 @@ const ProjectContent = ({ project }: { project: Projects[0] }) => {
         <div className="font-bold text-xl text-left mb-2">
           {project.project_title}
         </div>
-        <p className="opacity-60 text-justify text-sm">
+        <p className="opacity-60 text-justify text-sm md:text-base">
           {project.project_meta_description}
         </p>
       </div>
