@@ -222,7 +222,7 @@ const Projects = ({ projects }: Projects) => {
 
         <div
           ref={scrollRef}
-          className=" gap-4  max-w-[90vw] snap-x lg:max-w-[75vw]  overflow-x-scroll overflow-y-hidden flex scrollbar-visible"
+          className=" gap-4  max-w-[90vw] snap-x snap-proximity lg:max-w-[75vw]  overflow-x-scroll overflow-y-hidden flex scrollbar-visible"
         >
           {projects.map((project: Projects[0]) => (
             <ProjectCard
