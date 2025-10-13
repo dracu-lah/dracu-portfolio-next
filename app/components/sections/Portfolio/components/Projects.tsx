@@ -23,7 +23,7 @@ const ProjectCard = ({
   const [isImageHovered, setIsImageHovered] = useState(false);
 
   return (
-    <div className="bg-card overflow-hidden  flex flex-col min-w-80 md:min-w-[720px] md:w-full ">
+    <div className="bg-card snap-center overflow-hidden  flex flex-col min-w-80 md:min-w-[720px] md:w-full ">
       <div
         className="relative"
         onMouseEnter={() => setIsImageHovered(true)}
@@ -222,7 +222,7 @@ const Projects = ({ projects }: Projects) => {
 
         <div
           ref={scrollRef}
-          className=" gap-4  max-w-[90vw] snap-start lg:max-w-[75vw]  overflow-x-scroll overflow-y-hidden flex scrollbar-visible"
+          className=" gap-4  max-w-[90vw] snap-x lg:max-w-[75vw]  overflow-x-scroll overflow-y-hidden flex scrollbar-visible"
         >
           {projects.map((project: Projects[0]) => (
             <ProjectCard
