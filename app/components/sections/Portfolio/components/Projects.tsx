@@ -23,7 +23,7 @@ const ProjectCard = ({
   const [isImageHovered, setIsImageHovered] = useState(false);
 
   return (
-    <div className="bg-card snap-center overflow-hidden  flex flex-col min-w-80 md:min-w-[720px] md:w-full ">
+    <div className="bg-card snap-center overflow-hidden  flex flex-col min-w-80   ">
       <div
         className="relative"
         onMouseEnter={() => setIsImageHovered(true)}
@@ -96,6 +96,24 @@ const ProjectLinks = ({ project }: { project: Projects[0] }) => {
 
 // Project Content Component
 const ProjectContent = ({ project }: { project: Projects[0] }) => {
+  type WordTrimmer = (
+    text: string,
+    maxWords?: number,
+    ellipsis?: string,
+  ) => string;
+
+  const trimTo100Words: WordTrimmer = (
+    text,
+    maxWords = 100,
+    ellipsis = "...",
+  ) => {
+    // 💡 Fix: Use a new variable (words) instead of reassigning 't' (text)
+    const words = (text || "").trim().split(/\s+/);
+
+    return words.length <= maxWords
+      ? words.join(" ")
+      : words.slice(0, maxWords).join(" ") + ellipsis;
+  };
   return (
     <div className="flex-1 flex flex-col">
       <div className="px-6 py-4 flex-1">
@@ -103,7 +121,7 @@ const ProjectContent = ({ project }: { project: Projects[0] }) => {
           {project.project_title}
         </div>
         <p className="opacity-60 text-justify text-sm md:text-base">
-          {project.project_meta_description}
+          {trimTo100Words(project.project_meta_description)}
         </p>
       </div>
       <div className="px-4 pb-4 overflow-hidden">
@@ -217,12 +235,11 @@ const Projects = ({ projects }: Projects) => {
 
   return (
     <>
-      <div className="relative ">
-        <ScrollButton direction="left" onClick={() => scroll("left")} />
-
+      {/* Mobile: Horizontal Scroll */}
+      <div className="relative lg:hidden">
         <div
           ref={scrollRef}
-          className=" gap-4  max-w-[90vw] snap-x snap-proximity lg:max-w-[75vw]  overflow-x-scroll overflow-y-hidden flex scrollbar-visible"
+          className="gap-4 max-w-[90vw] snap-x snap-proximity overflow-x-scroll overflow-y-hidden flex scrollbar-visible"
         >
           {projects.map((project: Projects[0]) => (
             <ProjectCard
@@ -232,8 +249,17 @@ const Projects = ({ projects }: Projects) => {
             />
           ))}
         </div>
+      </div>
 
-        <ScrollButton direction="right" onClick={() => scroll("right")} />
+      {/* Desktop: Bento Grid */}
+      <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        {projects.map((project: Projects[0]) => (
+          <ProjectCard
+            key={project.$id}
+            project={project}
+            onImageClick={openModal}
+          />
+        ))}
       </div>
 
       {/* Image Modal */}
