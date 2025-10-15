@@ -14,23 +14,34 @@ const AboutSection = () => {
         <p className="text-base lg:text-lg font-light ">React • Next.js</p>
       </div>
 
-      <div className="mt-8 space-y-6 max-w-lg">
-        {/* Consolidated, punchier summary for the hero section, using only <b> tags */}
-        <p className="text-base lg:text-lg  leading-relaxed font-light">
+      {/* Adjusted spacing for better mobile layout (mt-6 on mobile, mt-8 on tablet+) */}
+      <div className="mt-6 md:mt-8 space-y-4 max-w-lg">
+        {/* Adjusted h3 text size for responsiveness */}
+        <h3 className="text-lg md:text-xl font-semibold mb-4">
+          Crafting Experiences
+        </h3>
+
+        {/* Paragraph 1: Professional Focus */}
+        <p className="text-base lg:text-lg leading-relaxed font-light">
           I'm a{" "}
           <b>results-driven Frontend Developer with 2+ years of experience</b>{" "}
-          specializing in the <b>React/Next.js</b> ecosystem. I build{" "}
-          <b>scalable, high-performance applications</b> with a core focus on{" "}
-          <b>optimization, component reusability, and clean architecture</b>.
+          specializing in the <b>React/Next.js</b> ecosystem. My work focuses on
+          building <b>scalable, high-performance applications</b> by
+          prioritizing optimization (code splitting, memoization) and{" "}
+          <b>component reusability</b>.
+        </p>
+
+        {/* Paragraph 2: Community & Growth Focus */}
+        <p className="text-base lg:text-lg leading-relaxed font-light">
           Beyond professional projects, I actively engage with the tech
           community by attending <b>FOSS meetups</b>, mentoring new coders, and
-          continually exploring technologies like <b>Docker and AWS</b>.
+          continually exploring technologies like <b>Docker and AWS</b> to
+          deepen my full-stack understanding.
         </p>
       </div>
 
       <div className="flex gap-4 justify-center items-center m-4 p-2">
         <a target="_blank" href={"mailto:nevilkrishna@gmail.com"} className=" ">
-          {/* Adjusted size to match GitHub SVG and LinkedIn Icon container */}
           <MailIcon className="size-8 hover:text-primary/80 duration-300 transition-colors" />
         </a>
         <a target="_blank" href="https://github.com/dracu-lah" className="">
@@ -49,7 +60,6 @@ const AboutSection = () => {
           target="_blank"
           href={"https://www.linkedin.com/in/nevil-krishna-k-77170222a/"}
           className="bg-primary flex justify-center items-center size-8 hover:bg-primary/80 transition-colors duration-300 rounded"
-          // We use the imported LinkedinIcon here for consistency
         >
           <LinkedinIcon className="text-background size-5" />
         </a>
