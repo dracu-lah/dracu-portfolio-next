@@ -8,36 +8,33 @@ const AboutSection = () => {
     >
       <div className="flex flex-col gap-4">
         <h2 className="text-2xl lg:text-3xl font-semibold ">Hey, I'm Nevil</h2>
-        <h1 className="text-4xl  lg:text-5xl font-bold leading-tight">
+        <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
           Frontend Developer
         </h1>
         <p className="text-base lg:text-lg font-light ">React • Next.js</p>
       </div>
 
-      <div className=" mt-8 space-y-6 max-w-lg">
-        {/* Consolidated Professional and Contribution Summary */}
-        <p className="text-base lg:text-lg leading-relaxed font-light">
-          I am a results-driven{" "}
-          <b>Frontend Developer with 2+ years of experience</b> specializing in
-          the <b>React/Next.js</b> ecosystem. My core focus is building{" "}
-          <b>scalable, high-performance applications</b> by prioritizing
-          optimization (code splitting, memoization) and{" "}
-          <b>component reusability</b>.
-        </p>
-
-        <p className="text-base lg:text-lg leading-relaxed font-light">
-          Beyond my professional role, I actively engage with the tech community
-          by <b>attending FOSS meetups</b>, exploring technologies like{" "}
-          <b>Docker and AWS</b>, and <b>mentoring others</b> to help them learn
-          to code.
+      <div className="mt-8 space-y-6 max-w-lg">
+        {/* Consolidated, punchier summary for the hero section, using only <b> tags */}
+        <p className="text-base lg:text-lg  leading-relaxed font-light">
+          I'm a{" "}
+          <b>results-driven Frontend Developer with 2+ years of experience</b>{" "}
+          specializing in the <b>React/Next.js</b> ecosystem. I build{" "}
+          <b>scalable, high-performance applications</b> with a core focus on{" "}
+          <b>optimization, component reusability, and clean architecture</b>.
+          Beyond professional projects, I actively engage with the tech
+          community by attending <b>FOSS meetups</b>, mentoring new coders, and
+          continually exploring technologies like <b>Docker and AWS</b>.
         </p>
       </div>
 
-      <div className=" flex  gap-4 bottom-0 left-0 justify-center items-center m-4  p-2">
+      <div className="flex gap-4 justify-center items-center m-4 p-2">
         <a target="_blank" href={"mailto:nevilkrishna@gmail.com"} className=" ">
-          <MailIcon className="size-10 hover:text-primary/80 duration-300 transition-colors" />
+          {/* Adjusted size to match GitHub SVG and LinkedIn Icon container */}
+          <MailIcon className="size-8 hover:text-primary/80 duration-300 transition-colors" />
         </a>
         <a target="_blank" href="https://github.com/dracu-lah" className="">
+          {/* GitHub SVG Icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -51,9 +48,10 @@ const AboutSection = () => {
         <a
           target="_blank"
           href={"https://www.linkedin.com/in/nevil-krishna-k-77170222a/"}
-          className=" bg-primary flex justify-center items-center size-8 hover:bg-primary/80 transition-colors duration-300"
+          className="bg-primary flex justify-center items-center size-8 hover:bg-primary/80 transition-colors duration-300 rounded"
+          // We use the imported LinkedinIcon here for consistency
         >
-          <LinkedinIcon className="text-background " />
+          <LinkedinIcon className="text-background size-5" />
         </a>
       </div>
     </section>
