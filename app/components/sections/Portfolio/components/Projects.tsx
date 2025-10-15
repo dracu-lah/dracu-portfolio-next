@@ -1,13 +1,6 @@
 "use client";
 import Image from "next/image";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Globe,
-  X,
-  Github,
-  Maximize2,
-} from "lucide-react";
+import { Globe, X, Github, Maximize2 } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { type Projects } from "@/types/appwrite";
@@ -138,27 +131,6 @@ const ProjectContent = ({ project }: { project: Projects[0] }) => {
   );
 };
 
-// Scroll Button Component
-const ScrollButton = ({
-  direction,
-  onClick,
-}: {
-  direction: "left" | "right";
-  onClick: () => void;
-}) => {
-  const isLeft = direction === "left";
-
-  return (
-    <Button
-      onClick={onClick}
-      className={`hidden lg:flex absolute ${isLeft ? "-left-15" : "-right-15"} top-1/2 -translate-y-1/2 z-10 p-2`}
-      aria-label={`Scroll ${direction}`}
-    >
-      {isLeft ? <ChevronLeft size={24} /> : <ChevronRight size={24} />}
-    </Button>
-  );
-};
-
 // Image Modal Component
 const ImageModal = ({
   imageUrl,
@@ -214,16 +186,6 @@ const ImageModal = ({
 const Projects = ({ projects }: Projects) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = 340;
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
 
   const openModal = (imageUrl: string) => {
     setSelectedImage(imageUrl);

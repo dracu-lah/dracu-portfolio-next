@@ -1,4 +1,3 @@
-import React from "react";
 import Projects from "./components/Projects";
 import { GetProjectsAPI } from "@/services/api";
 

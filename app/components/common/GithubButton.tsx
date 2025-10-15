@@ -1,5 +1,4 @@
 import { GetGithubURLAPI } from "@/services/api";
-import { Linkedin } from "lucide-react";
 
 const GithubButton = async () => {
   const githubURL = await GetGithubURLAPI();

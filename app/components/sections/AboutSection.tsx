@@ -7,23 +7,22 @@ const AboutSection = () => {
       className="min-h-[80vh] text-center p-1 lg:min-h-auto flex flex-col justify-center items-center px-4 md:px-8 py-12 lg:py-0"
     >
       <div className="flex flex-col gap-4">
-        <h2 className="text-2xl lg:text-3xl font-semibold ">Hey, I'm Nevil</h2>
+        <h2 className="text-2xl lg:text-3xl font-semibold ">
+          Hey, I&apos;m Nevil
+        </h2>
         <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
           Frontend Developer
         </h1>
         <p className="text-base lg:text-lg font-light ">React • Next.js</p>
       </div>
 
-      {/* Adjusted spacing for better mobile layout (mt-6 on mobile, mt-8 on tablet+) */}
       <div className="mt-6 md:mt-8 space-y-4 max-w-lg">
-        {/* Adjusted h3 text size for responsiveness */}
         <h3 className="text-lg md:text-xl font-semibold mb-4">
           Crafting Experiences
         </h3>
 
-        {/* Paragraph 1: Professional Focus */}
         <p className="text-base lg:text-lg leading-relaxed font-light">
-          I'm a{" "}
+          I&apos;m a{" "}
           <b>results-driven Frontend Developer with 2+ years of experience</b>{" "}
           specializing in the <b>React/Next.js</b> ecosystem. My work focuses on
           building <b>scalable, high-performance applications</b> by
@@ -31,7 +30,6 @@ const AboutSection = () => {
           <b>component reusability</b>.
         </p>
 
-        {/* Paragraph 2: Community & Growth Focus */}
         <p className="text-base lg:text-lg leading-relaxed font-light">
           Beyond professional projects, I actively engage with the tech
           community by attending <b>FOSS meetups</b>, mentoring new coders, and

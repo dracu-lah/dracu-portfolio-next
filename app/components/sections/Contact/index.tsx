@@ -1,7 +1,6 @@
-import { EnvelopeIcon, LinkIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import Contact from "./components/ContactForm";
-import { GithubIcon, Linkedin } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 const ContactSection = () => {
   return (
