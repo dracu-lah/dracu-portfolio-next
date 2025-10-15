@@ -113,7 +113,7 @@ const ProjectContent = ({ project }: { project: Projects[0] }) => {
         <div className="font-bold text-xl text-left mb-2">
           {project.project_title}
         </div>
-        <p className="opacity-60 text-justify text-sm md:text-base">
+        <p className="opacity-60 line-clamp-3 whitespace-break-spaces  text-justify text-sm md:text-base">
           {trimTo100Words(project.project_meta_description)}
         </p>
       </div>
