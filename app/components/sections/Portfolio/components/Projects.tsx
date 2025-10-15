@@ -35,7 +35,7 @@ const ProjectCard = ({
 
         {/* Maximize icon on hover */}
         <div
-          className={`absolute inset-0 flex items-center justify-center bg-primary/40 transition-opacity duration-300 ${
+          className={`absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity duration-300 ${
             isImageHovered ? "opacity-0 lg:opacity-100" : "opacity-0"
           }`}
           onClick={() => onImageClick(project.img_url)}
