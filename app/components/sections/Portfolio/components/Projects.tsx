@@ -239,7 +239,7 @@ const Projects = ({ projects }: Projects) => {
       <div className="relative lg:hidden">
         <div
           ref={scrollRef}
-          className="gap-4 max-w-[90vw] snap-x snap-proximity overflow-x-scroll overflow-y-hidden flex scrollbar-visible"
+          className="gap-4 max-w-[90vw] snap-x snap-mandatory overflow-x-scroll overflow-y-hidden flex scrollbar-visible"
         >
           {projects.map((project: Projects[0]) => (
             <ProjectCard

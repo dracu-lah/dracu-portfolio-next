@@ -12,18 +12,16 @@ const PortfolioSection = async () => {
   }
 
   return (
-    <>
-      <section
-        id="portfolio"
-        className="min-h-[80vh] flex flex-col justify-center md:justify-start items-center gap-10 m-4"
-      >
-        <h1 className="text-2xl md:text-4xl  px-10 font-bold text-center md:pt-40">
-          Portfolio & Previous Projects
-        </h1>
+    <section
+      id="portfolio"
+      className="min-h-[80vh] lg:min-h-screen  py-20 lg:py-40 flex flex-col justify-center  items-center gap-10 "
+    >
+      <h1 className="text-4xl  lg:text-5xl font-bold leading-tight">
+        Portfolio <span className="hidden md:inline">& Previous Projects</span>
+      </h1>
 
-        <Projects projects={projects} />
-      </section>
-    </>
+      <Projects projects={projects} />
+    </section>
   );
 };
 

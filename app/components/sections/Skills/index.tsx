@@ -14,13 +14,13 @@ const SkillsSection = async () => {
   return (
     <section
       id="skills"
-      className="min-h-[80vh] flex flex-col justify-center md:justify-start items-center gap-10 m-4"
+      className="min-h-[80vh] lg:min-h-screen flex flex-col justify-center py-20 lg:py-40 px-8  items-center gap-10 "
     >
-      <div className="flex flex-col justify-center items-center gap-4 md:pt-40">
+      <div className="flex flex-col justify-center items-center gap-4 ">
         <h3 className="font-mono text-center">
           A PROBLEM IS A CHANCE FOR YOU TO DO YOUR BEST.
         </h3>
-        <h1 className="text-4xl md:text-6xl text-center font-semibold">
+        <h1 className="text-4xl text-center  lg:text-5xl font-bold leading-tight">
           Skills & Experience
         </h1>
         <p className="text-lg font-thin text-center">
