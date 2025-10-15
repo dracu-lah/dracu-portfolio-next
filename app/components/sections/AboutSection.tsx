@@ -1,31 +1,27 @@
-import { GetAboutDescriptionAPI } from "@/services/api";
-
-const AboutSection = async () => {
-  let description = "";
-
-  try {
-    description = await GetAboutDescriptionAPI();
-  } catch (error) {
-    console.error("Failed to load about description:", error);
-  }
-
+const AboutSection = () => {
   return (
     <section
       id="about"
-      className="px-5  text-center md:text-left md:px-0 flex flex-col md:flex-row md:justify-around  justify-start pt-40 gap-y-10 items-center min-h-screen"
+      className="min-h-[80vh] text-center p-1 lg:min-h-auto flex flex-col justify-center items-center px-4 md:px-8 py-12 lg:py-0"
     >
-      <div className="flex flex-col gap-6">
-        <h1 className="text-4xl lg:text-6xl font-bold">Hi, I&apos;m Nevil </h1>
-        <h1 className="text-4xl lg:text-6xl font-bold pt-4">
-          Software Developer
+      <div className="flex flex-col gap-4">
+        <h2 className="text-2xl lg:text-3xl font-semibold ">Hey, I'm Nevil</h2>
+        <h1 className="text-4xl  lg:text-5xl font-bold leading-tight">
+          Full-Stack Developer
         </h1>
-        <h3 className="font-bold pt-10 md:max-w-xs lg:max-w-max">
-          Developer / Learner
-        </h3>
+        <p className="text-base lg:text-lg font-light ">React • Next.js</p>
       </div>
-      <p className="max-w-sm lg:max-w-lg mt-4 font-extralight lg:text-xl md:mt-0 md:text-lg p-2 my-10 leading-relaxed">
-        {description}
-      </p>
+
+      <div className="mt-8  space-y-4 max-w-lg">
+        <p className="text-base lg:text-lg leading-relaxed font-light">
+          I build scalable, high-performance applications with a focus on
+          optimization and clean architecture.
+        </p>
+        <p className="text-base lg:text-lg leading-relaxed font-light">
+          Passionate about solving complex problems, streamlining workflows, and
+          contributing to open-source projects.
+        </p>
+      </div>
     </section>
   );
 };

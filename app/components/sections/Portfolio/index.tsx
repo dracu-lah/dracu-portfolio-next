@@ -15,9 +15,9 @@ const PortfolioSection = async () => {
     <>
       <section
         id="portfolio"
-        className="min-h-screen flex flex-col justify-start items-center gap-10 m-4"
+        className="min-h-[80vh] flex flex-col justify-center md:justify-start items-center gap-10 m-4"
       >
-        <h1 className="text-4xl  px-10 font-bold text-center pt-40">
+        <h1 className="text-2xl md:text-4xl  px-10 font-bold text-center md:pt-40">
           Portfolio & Previous Projects
         </h1>
 

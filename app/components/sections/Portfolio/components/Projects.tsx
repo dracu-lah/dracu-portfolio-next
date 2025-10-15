@@ -23,7 +23,7 @@ const ProjectCard = ({
   const [isImageHovered, setIsImageHovered] = useState(false);
 
   return (
-    <div className="bg-card snap-center overflow-hidden  flex flex-col min-w-80   ">
+    <div className="bg-card border-2 dark:border-secondary/20 border-secondary/60 snap-center overflow-hidden  flex flex-col min-w-80   ">
       <div
         className="relative"
         onMouseEnter={() => setIsImageHovered(true)}
@@ -34,7 +34,7 @@ const ProjectCard = ({
             draggable="false"
             fill
             src={project.img_url}
-            className="cursor-pointer w-full h-full  hover:opacity-80 duration-300 object-cover"
+            className="cursor-pointer w-full h-full  lg:hover:opacity-80 duration-300 object-cover"
             alt={project.project_title}
             onClick={() => onImageClick(project.img_url)}
           />
@@ -42,8 +42,8 @@ const ProjectCard = ({
 
         {/* Maximize icon on hover */}
         <div
-          className={`absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity duration-300 ${
-            isImageHovered ? "opacity-100" : "opacity-0"
+          className={`absolute inset-0 flex items-center justify-center bg-primary/40 transition-opacity duration-300 ${
+            isImageHovered ? "opacity-0 lg:opacity-100" : "opacity-0"
           }`}
           onClick={() => onImageClick(project.img_url)}
         >

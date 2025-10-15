@@ -1,11 +1,10 @@
 "use client";
-
 import React from "react";
 import Typewriter from "typewriter-effect";
 
 const TypeWriterText = () => {
   return (
-    <div className="text-3xl md:text-6xl text-primary  dark:opacity-60  font-semibold p-4">
+    <div className="text-2xl md:text-5xl text-primary dark:opacity-60 font-semibold p-4 whitespace-nowrap overflow-hidden">
       <Typewriter
         options={{
           strings: [

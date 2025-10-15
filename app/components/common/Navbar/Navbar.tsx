@@ -1,18 +1,32 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useState, useEffect } from "react";
+
 const Navbar = ({ children }: PropsWithChildren) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       transition={{ duration: 0.5 }}
       animate={{ y: 0 }}
-      className="flex justify-between items-center  p-4 fixed min-w-full z-50 "
+      className={`flex justify-between items-center p-4 fixed min-w-full z-50 transition-colors duration-300 ${
+        isScrolled ? "bg-background/95 backdrop-blur-lg" : ""
+      }`}
     >
-      <a href="#" className="flex text-3xl  font-bold gap-x-2 items-center ">
+      <a href="#" className="flex text-3xl font-bold gap-x-2 items-center">
         <svg
-          className="size-9 "
+          className="size-9"
           viewBox="0 0 90 71"
           xmlns="http://www.w3.org/2000/svg"
         >

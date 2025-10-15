@@ -14,9 +14,9 @@ const SkillsSection = async () => {
   return (
     <section
       id="skills"
-      className="min-h-screen flex flex-col justify-start items-center gap-10 m-4"
+      className="min-h-[80vh] flex flex-col justify-center md:justify-start items-center gap-10 m-4"
     >
-      <div className="flex flex-col justify-center items-center gap-4 pt-40">
+      <div className="flex flex-col justify-center items-center gap-4 md:pt-40">
         <h3 className="font-mono text-center">
           A PROBLEM IS A CHANCE FOR YOU TO DO YOUR BEST.
         </h3>
