@@ -2,6 +2,7 @@ import HeroImage from "./components/HeroImage";
 import HeroCircles from "./components/HeroCircles";
 import TypeWriterText from "./components/TypeWriterText";
 import { Button } from "@/components/ui/button";
+import { Linkedin, LinkedinIcon } from "lucide-react";
 const HeroSection = () => {
   const heroLinks = [
     {

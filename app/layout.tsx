@@ -70,7 +70,7 @@ export default function RootLayout({
           <ResumeDownloadButton />
         </Navbar>
         {children}
-        <GithubButton />
+        {/* <GithubButton /> */}
         <RightButtons />
         <Analytics />
       </body>
