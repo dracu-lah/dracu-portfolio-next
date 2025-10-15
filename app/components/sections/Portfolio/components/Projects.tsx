@@ -1,13 +1,6 @@
 "use client";
 import Image from "next/image";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Globe,
-  X,
-  Github,
-  Maximize2,
-} from "lucide-react";
+import { Globe, X, Github, Maximize2 } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { type Projects } from "@/types/appwrite";
@@ -23,7 +16,7 @@ const ProjectCard = ({
   const [isImageHovered, setIsImageHovered] = useState(false);
 
   return (
-    <div className="bg-card snap-center overflow-hidden  flex flex-col min-w-80   ">
+    <div className="bg-card border-2 dark:border-secondary/20 border-secondary/60 snap-center overflow-hidden  flex flex-col min-w-80   ">
       <div
         className="relative"
         onMouseEnter={() => setIsImageHovered(true)}
@@ -34,7 +27,7 @@ const ProjectCard = ({
             draggable="false"
             fill
             src={project.img_url}
-            className="cursor-pointer w-full h-full  hover:opacity-80 duration-300 object-cover"
+            className="cursor-pointer w-full h-full  lg:hover:opacity-80 duration-300 object-cover"
             alt={project.project_title}
             onClick={() => onImageClick(project.img_url)}
           />
@@ -42,8 +35,8 @@ const ProjectCard = ({
 
         {/* Maximize icon on hover */}
         <div
-          className={`absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity duration-300 ${
-            isImageHovered ? "opacity-100" : "opacity-0"
+          className={`absolute inset-0 flex items-center justify-center bg-primary/40 transition-opacity duration-300 ${
+            isImageHovered ? "opacity-0 lg:opacity-100" : "opacity-0"
           }`}
           onClick={() => onImageClick(project.img_url)}
         >
@@ -138,27 +131,6 @@ const ProjectContent = ({ project }: { project: Projects[0] }) => {
   );
 };
 
-// Scroll Button Component
-const ScrollButton = ({
-  direction,
-  onClick,
-}: {
-  direction: "left" | "right";
-  onClick: () => void;
-}) => {
-  const isLeft = direction === "left";
-
-  return (
-    <Button
-      onClick={onClick}
-      className={`hidden lg:flex absolute ${isLeft ? "-left-15" : "-right-15"} top-1/2 -translate-y-1/2 z-10 p-2`}
-      aria-label={`Scroll ${direction}`}
-    >
-      {isLeft ? <ChevronLeft size={24} /> : <ChevronRight size={24} />}
-    </Button>
-  );
-};
-
 // Image Modal Component
 const ImageModal = ({
   imageUrl,
@@ -215,16 +187,6 @@ const Projects = ({ projects }: Projects) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = 340;
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
-
   const openModal = (imageUrl: string) => {
     setSelectedImage(imageUrl);
   };
@@ -239,7 +201,7 @@ const Projects = ({ projects }: Projects) => {
       <div className="relative lg:hidden">
         <div
           ref={scrollRef}
-          className="gap-4 max-w-[90vw] snap-x snap-proximity overflow-x-scroll overflow-y-hidden flex scrollbar-visible"
+          className="gap-4 max-w-[90vw] snap-x snap-mandatory overflow-x-scroll overflow-y-hidden flex scrollbar-visible"
         >
           {projects.map((project: Projects[0]) => (
             <ProjectCard

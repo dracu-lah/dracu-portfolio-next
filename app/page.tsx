@@ -8,9 +8,10 @@ export const revalidate = 86400;
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      <hr className="my-2 max-w-xs mx-auto"></hr>
-      <AboutSection />
+      <div className="grid py-4 min-h-screen grid-cols-1 lg:grid-cols-2">
+        <HeroSection />
+        <AboutSection />
+      </div>
       <hr className="max-w-xs mx-auto"></hr>
       <SkillsSection />
       <hr className="max-w-xs mx-auto"></hr>

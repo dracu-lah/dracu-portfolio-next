@@ -22,12 +22,12 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen  flex flex-col space-y-8 items-center justify-center text-center overflow-hidden pt-40"
+      className="min-h-screen  flex flex-col space-y-8 items-center justify-center text-center overflow-x-hidden overflow-y-clip md:pt-40"
     >
       <HeroCircles />
       <HeroImage />
       <div className="z-20">
-        <h2 className="text-sm uppercase text-primary/40 pb-2 tracking-[15px]">
+        <h2 className="text-xs md:text-sm uppercase text-primary/40 pb-2 tracking-[15px]">
           Learner
         </h2>
         <TypeWriterText />

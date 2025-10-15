@@ -14,7 +14,7 @@ const RightButtons = () => {
   });
   const navItems = [
     { id: "", href: "#", label: "/" },
-    { id: "about", href: "#about", label: "About" },
+    // { id: "about", href: "#about", label: "About" },
     { id: "skills", href: "#skills", label: "Skills" },
     { id: "portfolio", href: "#portfolio", label: "Portfolio" },
     { id: "contact", href: "#contact", label: "Contact" },

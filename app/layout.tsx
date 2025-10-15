@@ -1,11 +1,10 @@
 import RightButtons from "./components/common/RightButtons";
-import GithubButton from "./components/common/GithubButton";
 import Navbar from "./components/common/Navbar/Navbar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ResumeDownloadButton from "./components/common/Navbar/ResumeDownloadButton";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -34,11 +33,11 @@ export const metadata: Metadata = {
     title: "Nevil Krishna K | React Developer",
     description:
       "Frontend engineer portfolio specializing in React.js and performance optimization.",
-    url: "https://www.nevil.dev",
+    url: "https://nevil.dev",
     siteName: "Nevil Krishna Portfolio",
     images: [
       {
-        url: "https://www.nevil.dev/og-image.png",
+        url: "https://nevil.dev/og-image.png",
         width: 1200,
         height: 630,
         alt: "Nevil Krishna Portfolio",
@@ -52,7 +51,7 @@ export const metadata: Metadata = {
     title: "Nevil Krishna K | React Developer",
     description:
       "Frontend engineer portfolio specializing in React.js and performance optimization.",
-    images: ["https://www.nevil.dev/og-image.png"],
+    images: ["https://nevil.dev/og-image.png"],
   },
 };
 
@@ -70,7 +69,7 @@ export default function RootLayout({
           <ResumeDownloadButton />
         </Navbar>
         {children}
-        <GithubButton />
+        {/* <GithubButton /> */}
         <RightButtons />
         <Analytics />
       </body>

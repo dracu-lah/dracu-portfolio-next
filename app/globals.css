@@ -186,6 +186,14 @@ html {
 body a {
   @apply outline-none;
 }
+
+body b {
+  @apply font-semibold text-primary;
+}
+
+body b {
+  @apply cursor-pointer;
+}
 /* Custom scrollbar styles for webkit browsers (Chrome, Safari, Edge) */
 .scrollbar-visible::-webkit-scrollbar {
   height: 10px;
